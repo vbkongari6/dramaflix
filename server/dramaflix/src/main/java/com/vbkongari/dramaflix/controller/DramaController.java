@@ -17,7 +17,6 @@ import com.vbkongari.dramaflix.service.DramaService;
 @RequestMapping(path="dramas")
 public class DramaController {
 
-
 	@Autowired
 	DramaService service;
 	

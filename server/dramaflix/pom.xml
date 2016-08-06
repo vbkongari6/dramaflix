@@ -5,7 +5,7 @@
   <groupId>com.vbkongari</groupId>
   <artifactId>dramaflix</artifactId>
   <version>0.0.1</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>dramaflix</name>
   <url>http://egen.io</url>
