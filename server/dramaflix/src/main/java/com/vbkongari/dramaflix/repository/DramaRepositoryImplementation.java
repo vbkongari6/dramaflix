@@ -18,7 +18,7 @@ public class DramaRepositoryImplementation implements DramaRepository {
 	
 	@Override
 	public List<Drama> findAllDramas() {
-		TypedQuery<Drama> query = em.createNamedQuery("Drama.findDramaByTitle", Drama.class);
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findAllDramas", Drama.class);
 		return query.getResultList();
 	}
 
