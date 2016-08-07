@@ -15,10 +15,10 @@ import org.hibernate.annotations.GenericGenerator;
 @NamedQueries({ 
 	@NamedQuery(name = "Drama.findAllDramas", query = "SELECT d FROM Drama d ORDER BY d.title ASC"),
 	@NamedQuery(name = "Drama.findDramaByTitle", query = "SELECT d FROM Drama d WHERE d.title=:pTitle"),
-	@NamedQuery(name = "Drama.findTopRatedDrama", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.imdbRating DESC"),
-	@NamedQuery(name = "Drama.findDramaByType", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.title ASC"),
-	@NamedQuery(name = "Drama.findDramaByYear", query = "SELECT d FROM Drama d WHERE d.year=:pYear ORDER BY d.title ASC"),
-	@NamedQuery(name = "Drama.findDramaByGenre", query = "SELECT d FROM Drama d WHERE LOWER(d.genre) LIKE LOWER(CONCAT('%',:pGenre,'%')) ORDER BY d.title ASC")
+	@NamedQuery(name = "Drama.findTopRatedDramas", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.imdbRating DESC"),
+	@NamedQuery(name = "Drama.filterDramasByType", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.title ASC"),
+	@NamedQuery(name = "Drama.filterDramasByYear", query = "SELECT d FROM Drama d WHERE d.year=:pYear ORDER BY d.title ASC"),
+	@NamedQuery(name = "Drama.filterDramasByGenre", query = "SELECT d FROM Drama d WHERE LOWER(d.genre) LIKE LOWER(CONCAT('%',:pGenre,'%')) ORDER BY d.title ASC")
 })
 public class Drama {
 	
@@ -48,6 +48,7 @@ public class Drama {
 	private String imdbVotes;
 	private String imdbID;
 	private String type;
+	
 	public String getId() {
 		return id;
 	}

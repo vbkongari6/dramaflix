@@ -23,28 +23,23 @@ public class DramaServiceImplementation implements DramaService{
 	}
 	
 	@Override
-	public List<Drama> findTopRatedIMDBMovies() {
-		return repository.findTopRatedIMDBMovies();
+	public List<Drama> findTopRatedDramas(String type) {
+		return repository.findTopRatedDramas(type);
 	}
 	
 	@Override
-	public List<Drama> findTopRatedIMDBTVSeries() {
-		return repository.findTopRatedIMDBTVSeries();
-	}
-	
-	@Override
-	public List<Drama> findDramaByType(String type) {
-		return repository.findDramaByType(type);
+	public List<Drama> filterDramasByType(String type) {
+		return repository.filterDramasByType(type);
 	}
 
 	@Override
-	public List<Drama> findDramaByYear(int year) {
-		return repository.findDramaByYear(year);
+	public List<Drama> filterDramasByYear(int year) {
+		return repository.filterDramasByYear(year);
 	}
 
 	@Override
-	public List<Drama> findDramaByGenre(String genre) {
-		return repository.findDramaByGenre(genre);
+	public List<Drama> filterDramasByGenre(String genre) {
+		return repository.filterDramasByGenre(genre);
 	}
 
 

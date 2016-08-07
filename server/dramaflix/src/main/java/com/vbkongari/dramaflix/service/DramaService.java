@@ -8,15 +8,13 @@ public interface DramaService {
 
 	public List<Drama> findAllDramas();
 	
-	public List<Drama> findTopRatedIMDBMovies();
+	public List<Drama> findTopRatedDramas(String type);
 	
-	public List<Drama> findTopRatedIMDBTVSeries();
+	public List<Drama> filterDramasByType(String type);
 	
-	public List<Drama> findDramaByType(String type);
+	public List<Drama> filterDramasByYear(int year );
 	
-	public List<Drama> findDramaByYear(int year );
-	
-	public List<Drama> findDramaByGenre(String genre);
+	public List<Drama> filterDramasByGenre(String genre);
 	
 	public Drama findOneDrama(String id);
 	

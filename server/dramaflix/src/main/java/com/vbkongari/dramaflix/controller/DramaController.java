@@ -23,31 +23,26 @@ public class DramaController {
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Drama> findAllDramas() {
 		return service.findAllDramas();
-	}
+	}	
 	
-	@RequestMapping(method=RequestMethod.GET, path="bestmovies", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> findTopRatedIMDBMovies() {
-		return service.findTopRatedIMDBMovies();
-	}
-	
-	@RequestMapping(method=RequestMethod.GET, path="besttvseries", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> findTopRatedIMDBTVSeries() {
-		return service.findTopRatedIMDBTVSeries();
-	}		
+	@RequestMapping(method=RequestMethod.GET, path="best{type}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Drama> findTopRatedDramas(@PathVariable("type") String dramaType) {
+		return service.findTopRatedDramas(dramaType);
+	}	
 	
 	@RequestMapping(method=RequestMethod.GET, path="type={type}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> findDramaByType(@PathVariable("type") String dramaType) {
-		return service.findDramaByType(dramaType);
+	public List<Drama> filterDramasByType(@PathVariable("type") String dramaType) {
+		return service.filterDramasByType(dramaType);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="year={year}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> findDramaByYear(@PathVariable("year") int dramaYear) {
-		return service.findDramaByYear(dramaYear);
+	public List<Drama> filterDramasByYear(@PathVariable("year") int dramaYear) {
+		return service.filterDramasByYear(dramaYear);
 	}	
 	
 	@RequestMapping(method=RequestMethod.GET, path="genre={genre}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> findDramaByGenre(@PathVariable("genre") String dramaGenre) {
-		return service.findDramaByGenre(dramaGenre);
+	public List<Drama> filterDramasByGenre(@PathVariable("genre") String dramaGenre) {
+		return service.filterDramasByGenre(dramaGenre);
 	}	
 	
 	
