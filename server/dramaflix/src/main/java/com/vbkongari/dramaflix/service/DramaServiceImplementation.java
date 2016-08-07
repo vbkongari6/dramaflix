@@ -21,6 +21,32 @@ public class DramaServiceImplementation implements DramaService{
 	public List<Drama> findAllDramas() {
 		return repository.findAllDramas();
 	}
+	
+	@Override
+	public List<Drama> findTopRatedIMDBMovies() {
+		return repository.findTopRatedIMDBMovies();
+	}
+	
+	@Override
+	public List<Drama> findTopRatedIMDBTVSeries() {
+		return repository.findTopRatedIMDBTVSeries();
+	}
+	
+	@Override
+	public List<Drama> findDramaByType(String type) {
+		return repository.findDramaByType(type);
+	}
+
+	@Override
+	public List<Drama> findDramaByYear(int year) {
+		return repository.findDramaByYear(year);
+	}
+
+	@Override
+	public List<Drama> findDramaByGenre(String genre) {
+		return repository.findDramaByGenre(genre);
+	}
+
 
 	@Override
 	public Drama findOneDrama(String id) {
@@ -61,4 +87,7 @@ public class DramaServiceImplementation implements DramaService{
 		repository.deleteDrama(existing);
 	}
 
+	
+
+	
 }

@@ -21,6 +21,41 @@ public class DramaRepositoryImplementation implements DramaRepository {
 		TypedQuery<Drama> query = em.createNamedQuery("Drama.findAllDramas", Drama.class);
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<Drama> findTopRatedIMDBMovies() {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findTopRatedDrama", Drama.class);
+		query.setParameter("pType", "movie");
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Drama> findTopRatedIMDBTVSeries() {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findTopRatedDrama", Drama.class);
+		query.setParameter("pType", "series");
+		return query.getResultList();
+	}	
+	
+	@Override
+	public List<Drama> findDramaByType(String type) {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findDramaByType", Drama.class);
+		query.setParameter("pType", type);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Drama> findDramaByYear(int year) {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findDramaByYear", Drama.class);
+		query.setParameter("pYear", year);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Drama> findDramaByGenre(String genre) {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.findDramaByGenre", Drama.class);
+		query.setParameter("pGenre", genre);
+		return query.getResultList();
+	}
 
 	@Override
 	public Drama findOneDrama(String id) {
@@ -54,4 +89,7 @@ public class DramaRepositoryImplementation implements DramaRepository {
 		em.remove(drama);
 	}
 
+	
+
+	
 }
