@@ -1,13 +1,10 @@
-package com.vbkongari.dramaflix.service;
+package com.vbkongari.dramaflix.repository;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.vbkongari.dramaflix.entity.DramaReview;
 
-@Service
-public interface DramaReviewService {
+public interface DramaReviewRepository {
 	
 	public List<DramaReview> findAllComments();
 	

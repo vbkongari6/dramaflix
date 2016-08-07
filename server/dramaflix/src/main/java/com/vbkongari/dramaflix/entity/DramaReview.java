@@ -1,11 +1,13 @@
 package com.vbkongari.dramaflix.entity;
 
 import java.util.Date;
+//import java.util.List;
 
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -17,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table
 @NamedQueries({ 
-	@NamedQuery(name = "DramaReview.findAllReviews", query = "SELECT dr FROM DramaReview dr ORDER BY d.title ASC")
+	@NamedQuery(name = "DramaReview.findAllComments", query = "SELECT dr FROM DramaReview dr ORDER BY dr.timestamp DESC")
 })
 public class DramaReview {
 	
@@ -26,17 +28,19 @@ public class DramaReview {
 	@GeneratedValue(generator="customUUID")
 	private String id;
 
-	@ManyToMany
-	private User user;
+//	@ManyToMany
+//	@Column(nullable = false)
+//	private List<User> user;
+//	
+//	@ManyToMany
+//	@Column(nullable = false)
+//	private List<Drama> drama;
 	
-	@ManyToMany
-	private Drama drama;
-	
-	private float rating;
-	private String review;
+	private int rating;
+	private String comment;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTime;
+	private Date timestamp;
 
 	public String getId() {
 		return id;
@@ -46,50 +50,56 @@ public class DramaReview {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
-	}
+//	public List<User> getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(List<User> user) {
+//		this.user = user;
+//	}
+//
+//	public List<Drama> getDrama() {
+//		return drama;
+//	}
+//
+//	public void setDrama(List<Drama> drama) {
+//		this.drama = drama;
+//	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Drama getDrama() {
-		return drama;
-	}
-
-	public void setDrama(Drama drama) {
-		this.drama = drama;
-	}
-
-	public float getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(float rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
-	public String getReview() {
-		return review;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setReview(String review) {
-		this.review = review;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
-	public Date getDateTime() {
-		return dateTime;
+	public Date getTimestamp() {
+		timestamp = new Date();
+		return timestamp;
 	}
 
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	@Override
 	public String toString() {
-		return "DramaReview [id=" + id + ", user=" + user + ", drama=" + drama + ", rating=" + rating + ", review="
-				+ review + ", dateTime=" + dateTime + "]";
+		return "DramaReview [id=" + id + ", rating=" + rating + ", comment="
+				+ comment + ", timestamp=" + timestamp + "]";
 	}
-
+	
+//	@Override
+//	public String toString() {
+//		return "DramaReview [id=" + id + ", user=" + user + ", drama=" + drama + ", rating=" + rating + ", comment="
+//				+ comment + ", timestamp=" + timestamp + "]";
+//	}
 }

@@ -169,6 +169,7 @@ public class Drama {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	@Override
 	public String toString() {
 		return "Drama [id=" + id + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released=" + released
