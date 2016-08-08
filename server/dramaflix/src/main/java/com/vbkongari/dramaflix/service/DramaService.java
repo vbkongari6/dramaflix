@@ -12,11 +12,13 @@ public interface DramaService {
 	
 	public List<Drama> filterDramasByType(String type);
 	
-	public List<Drama> filterDramasByYear(int year );
+	public List<Drama> filterDramasByYear(int year);
 	
 	public List<Drama> filterDramasByGenre(String genre);
 	
 	public Drama findOneDrama(String id);
+	
+	public List<Drama> sortDramasByYearDESC();
 	
 	public Drama addDrama(Drama drama);
 	

@@ -18,7 +18,8 @@ import org.hibernate.annotations.GenericGenerator;
 	@NamedQuery(name = "Drama.findTopRatedDramas", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.imdbRating DESC"),
 	@NamedQuery(name = "Drama.filterDramasByType", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.title ASC"),
 	@NamedQuery(name = "Drama.filterDramasByYear", query = "SELECT d FROM Drama d WHERE d.year=:pYear ORDER BY d.title ASC"),
-	@NamedQuery(name = "Drama.filterDramasByGenre", query = "SELECT d FROM Drama d WHERE LOWER(d.genre) LIKE LOWER(CONCAT('%',:pGenre,'%')) ORDER BY d.title ASC")
+	@NamedQuery(name = "Drama.filterDramasByGenre", query = "SELECT d FROM Drama d WHERE LOWER(d.genre) LIKE LOWER(CONCAT('%',:pGenre,'%')) ORDER BY d.title ASC"),
+	@NamedQuery(name = "Drama.sortDramasByYearDESC", query = "SELECT d FROM Drama d ORDER BY d.year DESC")
 })
 public class Drama {
 	

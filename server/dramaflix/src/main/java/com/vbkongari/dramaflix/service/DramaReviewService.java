@@ -12,5 +12,13 @@ public interface DramaReviewService {
 	public List<DramaReview> findAllComments();
 	
 	public DramaReview writeComment(DramaReview comment);
+	
+	public double avgRating(String id);
+	
+	public DramaReview findComment(String id);
+	
+	public DramaReview editComment(String id, DramaReview comment);
+	
+	public void deleteComment(String id);
 
 }

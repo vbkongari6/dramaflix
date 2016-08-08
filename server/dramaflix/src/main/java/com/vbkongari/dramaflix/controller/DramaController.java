@@ -43,32 +43,27 @@ public class DramaController {
 	@RequestMapping(method=RequestMethod.GET, path="genre={genre}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Drama> filterDramasByGenre(@PathVariable("genre") String dramaGenre) {
 		return service.filterDramasByGenre(dramaGenre);
-	}	
-	
+	}		
 	
 	@RequestMapping(method=RequestMethod.GET, path="{id}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Drama findOneDrama(@PathVariable("id") String dramaId) {
 		return service.findOneDrama(dramaId);
-	}
+	}	
 	
-	
-	
+	@RequestMapping(method=RequestMethod.GET, path="sort=year/DESC", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Drama> sortDramasByYearDESC() {
+		return service.sortDramasByYearDESC();
+	}	
 	
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Drama addDrama(@RequestBody Drama drama) {
 		return service.addDrama(drama);
-	}
-	
-	
-	
+	}	
 	
 	@RequestMapping(method=RequestMethod.PUT, path="{id}", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Drama updateDrama(@PathVariable("id") String dramaId, @RequestBody Drama drama) {
 		return service.updateDrama(dramaId, drama);
-	}
-	
-	
-	
+	}	
 	
 	@RequestMapping(method=RequestMethod.DELETE, path="{id}")
 	public void deleteDrama(@PathVariable("id") String dramaId) {

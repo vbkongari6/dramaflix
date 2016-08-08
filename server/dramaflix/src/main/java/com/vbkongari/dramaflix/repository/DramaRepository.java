@@ -18,11 +18,13 @@ public interface DramaRepository {
 	
 	public Drama findOneDrama(String id);
 	
+	public List<Drama> sortDramasByYearDESC();
+	
 	public Drama findDramaByTitle(String title);
 	
 	public Drama addDrama(Drama drama);
 	
 	public Drama updateDrama(Drama drama);
 	
-	public void deleteDrama(Drama drama);	
+	public void deleteDrama(String id, Drama drama);	
 }

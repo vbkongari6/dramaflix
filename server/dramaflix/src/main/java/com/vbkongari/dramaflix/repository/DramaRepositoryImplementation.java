@@ -50,6 +50,12 @@ public class DramaRepositoryImplementation implements DramaRepository {
 		query.setParameter("pGenre", genre);
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<Drama> sortDramasByYearDESC() {
+		TypedQuery<Drama> query = em.createNamedQuery("Drama.sortDramasByYearDESC", Drama.class);
+		return query.getResultList();
+	}
 
 	@Override
 	public Drama findOneDrama(String id) {
@@ -79,9 +85,11 @@ public class DramaRepositoryImplementation implements DramaRepository {
 	}
 
 	@Override
-	public void deleteDrama(Drama drama) {		
+	public void deleteDrama(String id, Drama drama) {	
 		em.remove(drama);
 	}
+
+	
 
 	
 

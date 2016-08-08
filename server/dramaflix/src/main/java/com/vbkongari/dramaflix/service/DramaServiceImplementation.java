@@ -41,6 +41,13 @@ public class DramaServiceImplementation implements DramaService{
 	public List<Drama> filterDramasByGenre(String genre) {
 		return repository.filterDramasByGenre(genre);
 	}
+	
+	@Override
+	public List<Drama> sortDramasByYearDESC() {
+		return repository.sortDramasByYearDESC();
+	}
+
+	
 
 
 	@Override
@@ -79,7 +86,7 @@ public class DramaServiceImplementation implements DramaService{
 		if(existing == null) {
 			throw new DramaNotFoundException("Drama with id: " + id + " not found");
 		}
-		repository.deleteDrama(existing);
+		repository.deleteDrama(id, existing);
 	}
 
 	

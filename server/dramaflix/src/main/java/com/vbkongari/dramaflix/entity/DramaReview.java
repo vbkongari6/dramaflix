@@ -3,23 +3,29 @@ package com.vbkongari.dramaflix.entity;
 import java.util.Date;
 //import java.util.List;
 
-//import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
 //import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+//import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table
 @NamedQueries({ 
-	@NamedQuery(name = "DramaReview.findAllComments", query = "SELECT dr FROM DramaReview dr ORDER BY dr.timestamp DESC")
+	@NamedQuery(name = "DramaReview.findAllComments", query = "SELECT dr FROM DramaReview dr ORDER BY dr.timestamp DESC"),
+	@NamedQuery(name = "DramaReview.avgRating", query = "SELECT AVG(dr.rating) FROM DramaReview dr WHERE dr.drama.id=:pDramaId")
 })
 public class DramaReview {
 	
@@ -28,13 +34,19 @@ public class DramaReview {
 	@GeneratedValue(generator="customUUID")
 	private String id;
 
-//	@ManyToMany
-//	@Column(nullable = false)
-//	private List<User> user;
-//	
-//	@ManyToMany
-//	@Column(nullable = false)
-//	private List<Drama> drama;
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@LazyCollection(LazyCollectionOption.FALSE)	
+	private User user;
+	
+
+	//@JoinColumn(name = "userId")
+	//private List<User> user;
+	
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private Drama drama;
+	
+	//private List<Drama> drama;
 	
 	private int rating;
 	private String comment;
@@ -57,7 +69,18 @@ public class DramaReview {
 //	public void setUser(List<User> user) {
 //		this.user = user;
 //	}
-//
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
+
 //	public List<Drama> getDrama() {
 //		return drama;
 //	}
@@ -65,6 +88,17 @@ public class DramaReview {
 //	public void setDrama(List<Drama> drama) {
 //		this.drama = drama;
 //	}
+	
+	public Drama getDrama() {
+		return drama;
+	}
+
+	public void setDrama(Drama drama) {
+		this.drama = drama;
+	}
+	
+	
+	
 
 	public int getRating() {
 		return rating;
@@ -83,23 +117,16 @@ public class DramaReview {
 	}
 
 	public Date getTimestamp() {
-		timestamp = new Date();
 		return timestamp;
 	}
 
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "DramaReview [id=" + id + ", rating=" + rating + ", comment="
+		return "DramaReview [id=" + id + ", user=" + user + ", drama=" + drama + ", rating=" + rating + ", comment="
 				+ comment + ", timestamp=" + timestamp + "]";
 	}
-	
-//	@Override
-//	public String toString() {
-//		return "DramaReview [id=" + id + ", user=" + user + ", drama=" + drama + ", rating=" + rating + ", comment="
-//				+ comment + ", timestamp=" + timestamp + "]";
-//	}
 }
