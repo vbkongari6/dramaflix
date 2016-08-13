@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dramaflix">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Dramflix - know about your favorite dramas, movies, tv series, etc. here just by logging in :)">
+        <title>Dramaflix</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Mirza' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <h4 class="title-in-header">d r a m a f l i x</h4>
+            </div>
+        </header>
+
+        <section ng-view></section>
+
+        <footer>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+            <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+            <script type="text/javascript" src="../js/dramaflix.module.js"></script>
+            <script type="text/javascript" src="../js/index.controller.js"></script>
+            <script type="text/javascript" src="../js/signup.controller.js"></script>
+            <script type="text/javascript" src="../js/login.controller.js"></script>
+        </footer>
+    </body>
+</html>
