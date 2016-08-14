@@ -12,14 +12,6 @@
     function indexController () {
         var indexVm = this;
 
-        indexVm.toSignUp = function () {
-            console.log('in signup');
-            indexVm.go = $location.path( '/signup.tmpl.html' );
-        }
-
-        indexVm.toLogin = function () {
-            $location.path( '/login.tmpl.html' );
-        }
     }
 
 })();

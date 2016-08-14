@@ -1,0 +1,16 @@
+{
+  "name": "dramaflix",
+  "description": "interactive drama, movie, tv shows information site",
+  "main": "index.js",
+  "authors": [
+    "Vijay Bhargav Kongari",
+    "vbkongari6@outlook.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vbkongari6/dramaflix",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
