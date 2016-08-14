@@ -10,27 +10,27 @@
     function configureRoutes ($routeProvider) {
         $routeProvider
             .when('/index', {
-                templateUrl: 'index.tmpl.html',
+                templateUrl: 'app/views/index.tmpl.html',
                 controller: 'indexController',
                 controllerAs: 'indexVm'
             })
             .when('/signup', {
-                templateUrl: 'signup.tmpl.html',
+                templateUrl: 'app/views/signup.tmpl.html',
                 controller: 'signupController',
                 controllerAs: 'signupVm'
             })
             .when('/login', {
-                templateUrl: 'login.tmpl.html',
+                templateUrl: 'app/views/login.tmpl.html',
                 controller: 'loginController',
                 controllerAs: 'loginVm'
             })
             .when('/user-detail/:id', {
-                templateUrl: 'user-detail.tmpl.html',
+                templateUrl: 'app/views/user-detail.tmpl.html',
                 controller: 'UserDetailController',
                 controllerAs: 'userVm'
             })
             .when('/add-user', {
-                templateUrl: 'add-user.tmpl.html',
+                templateUrl: 'app/views/add-user.tmpl.html',
                 controller: 'AddUserController',
                 controllerAs: 'addUserVm'
             })

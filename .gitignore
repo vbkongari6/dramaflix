@@ -13,3 +13,7 @@
 
 **/target/*
 **/.recommenders
+
+**/node_modules
+**/bower_components
+**/build

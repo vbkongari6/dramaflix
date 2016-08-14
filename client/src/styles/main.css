@@ -173,12 +173,12 @@ body header {
 
     /* login.tmpl.html */
     .login-body {
-        background-image: url("http://www.mediastinger.com/wp-content/uploads/2015/11/The-Revenant-2015-after-credits-hq.jpg"), url("../images/The-Revenant-2015-after-credits-hq.jpg");
+        background-image: url("http://www.mediastinger.com/wp-content/uploads/2015/11/The-Revenant-2015-after-credits-hq.jpg"), url("../../images/The-Revenant-2015-after-credits-hq.jpg");
     }
 
     /* signup.tmpl.html */
     .signup-body {
-        background-image: url("https://i.ytimg.com/vi/De7lfauxTg4/maxresdefault.jpg"), url("../images/maxresdefault.jpg");
+        background-image: url("https://i.ytimg.com/vi/De7lfauxTg4/maxresdefault.jpg"), url("../../images/maxresdefault.jpg");
     }
 
 
