@@ -1,0 +1,30 @@
+.image-settings {
+    display: inline;
+    border: 3px solid lightgray;
+}
+
+.img-width-alldramas {
+    text-align: center;
+}
+
+
+.img-width-alldramas img{
+    width: 120px;
+    height: 180px;
+    margin: 2px 0px 2px 0px;
+}
+
+@media (min-width: 768px) {
+
+    .img-width-alldramas img{
+        width: 200px;
+        height: 300px;
+        margin: 3px 2px 3px 2px;
+    }
+
+
+
+
+
+
+}
