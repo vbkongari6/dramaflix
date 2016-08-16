@@ -20,6 +20,7 @@
         drm.getDramasByType = getDramasByType;
         drm.getDramasByYear = getDramasByYear;
         drm.getDramasByGenre = getDramasByGenre;
+        drm.getSortDramasByYear = getSortDramasByYear;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -66,6 +67,12 @@
         function getDramasByGenre (genre) {
             console.log('In Drama Service: GET Dramas By Year');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/genre=' + genre)
+                .then(successFn, failureFn);
+        }
+
+        function getSortDramasByYear () {
+            console.log('In Drama Service: GET Dramas By Year');
+            return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=year/DESC')
                 .then(successFn, failureFn);
         }
         

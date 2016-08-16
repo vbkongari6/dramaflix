@@ -79,6 +79,11 @@
                 controller: 'dramaGenreController',
                 controllerAs: 'allDramasVm'
             })
+            .when('/dramas/sortByYear', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'sortDramaByYearController',
+                controllerAs: 'allDramasVm'
+            })
             .otherwise({
                 redirectTo: '/index'
             });
