@@ -105,6 +105,12 @@
                 controller: 'sortDramaByIMDBRatingController',
                 controllerAs: 'allDramasVm'
             })
+            .when('/dramas/sortByIMDBVotes', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                caseInsensitiveMatch: true,
+                controller: 'sortDramasByIMDBVotesController',
+                controllerAs: 'allDramasVm'
+            })
             .otherwise({
                 redirectTo: '/index'
             });

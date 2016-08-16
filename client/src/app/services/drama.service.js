@@ -22,6 +22,7 @@
         drm.getDramasByGenre = getDramasByGenre;
         drm.getSortDramasByYear = getSortDramasByYear;
         drm.getSortDramasByIMDBRating = getSortDramasByIMDBRating;
+        drm.getSortDramasByIMDBVotes = getSortDramasByIMDBVotes;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -80,6 +81,12 @@
         function getSortDramasByIMDBRating () {
             console.log('In Drama Service: GET Sorted Dramas By IMDB Rating');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBRating/DESC')
+                .then(successFn, failureFn);
+        }
+
+        function getSortDramasByIMDBVotes () {
+            console.log('In Drama Service: GET Sorted Dramas By IMDB Votes');
+            return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBVotes/DESC')
                 .then(successFn, failureFn);
         }
 
