@@ -64,6 +64,21 @@
                 controller: 'topRatedTVSeriesController',
                 controllerAs: 'allDramasVm'
             })
+            .when('/dramas/type/:type', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'dramaTypeController',
+                controllerAs: 'allDramasVm'
+            })
+            .when('/dramas/year/:year', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'dramaYearController',
+                controllerAs: 'allDramasVm'
+            })
+            .when('/dramas/genre/:genre', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'dramaGenreController',
+                controllerAs: 'allDramasVm'
+            })
             .otherwise({
                 redirectTo: '/index'
             });
