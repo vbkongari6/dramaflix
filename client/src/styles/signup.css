@@ -1,0 +1,22 @@
+.signup-body {
+    /*background-color: #11204d;*/
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.signup-container {
+    padding-top: 10px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+@media (min-width: 768px) {
+    .signup-body {
+        background-image: url("https://i.ytimg.com/vi/De7lfauxTg4/maxresdefault.jpg");
+    }
+}

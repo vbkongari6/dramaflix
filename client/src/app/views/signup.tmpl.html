@@ -1,100 +1,140 @@
-<div class="login-container signup-body">
-    <div class="row margin-zero">
-        <div class="col-md-4 col-md-offset-4 well">
-            <h1 class="text-center">SIGN-UP</h1>
+<div class="signup-container signup-body">
+    <div class="col-md-4 col-md-offset-4 well">
+        <h1 class="text-center">SIGN-UP</h1>
+        <form name="signupForm" ng-submit="signupForm.$setPristine(); signupVm.addUser()" novalidate>
+            <!--<div class="form-group">-->
+                <!--<label for="firstName">First Name</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-user"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="firstName" name="firstName" placeholder="first name" ng-model="signupVm.newUser.firstName" required ng-minlength="3"/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.firstName.$error" ng-if="signupForm.firstName.$dirty">-->
+                    <!--<p ng-message="required" class="error">First Name is required</p>-->
+                    <!--<p ng-message="minlength" class="error">First Name has to be at least 3 characters</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="lastName">Last Name</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-user"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="lastName" name="lastName" placeholder="last name" ng-model="signupVm.newUser.lastName" ng-minlength="3" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.lastName.$error" ng-if="signupForm.lastName.$dirty">-->
+                    <!--<p ng-message="required" class="error">Last Name is required</p>-->
+                    <!--<p ng-message="minlength" class="error">Last Name has to be at least 3 characters</p>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="form-group">
-                <label>First Name</label>
+                <label for="emailAddress">Email Address</label>
                 <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="first name"/>
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="email address" ng-model="signupVm.newUser.email" required/>
+                </div>
+                <div ng-messages="signupForm.emailAddress.$error" ng-if="signupForm.emailAddress.$dirty">
+                    <p ng-message="required" class="error">Email Address is required</p>
+                    <p ng-message="email" class="error">Invalid Email Address</p>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label for="phone">Phone</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-earphone"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="phone" name="phone" placeholder="phone number | format: 6666666666" ng-model="signupVm.newUser.phone" ng-pattern="/^[0-9]{10}$/" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.phone.$error" ng-if="signupForm.phone.$dirty">-->
+                    <!--<p ng-message="required" class="error">Phone number is required</p>-->
+                    <!--<p ng-message="pattern" class="error">Must be a valid 10 digit phone number</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="address">Address</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="address" name="address" placeholder="address" ng-model="signupVm.newUser.address" ng-minlength="2" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.address.$error" ng-if="signupForm.address.$dirty">-->
+                    <!--<p ng-message="required" class="error">Address is required</p>-->
+                    <!--<p ng-message="minlength" class="error">Invalid Address</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="city">City</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="city" name="city" placeholder="city" ng-model="signupVm.newUser.city" ng-minlength="2" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.city.$error" ng-if="signupForm.city.$dirty">-->
+                    <!--<p ng-message="required" class="error">City is required</p>-->
+                    <!--<p ng-message="minlength" class="error">Invalid City</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="state">State</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="state" name="state" placeholder="state" ng-model="signupVm.newUser.state" ng-minlength="2" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.state.$error" ng-if="signupForm.state.$dirty">-->
+                    <!--<p ng-message="required" class="error">State is required</p>-->
+                    <!--<p ng-message="minlength" class="error">Invalid State</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="country">Country</label>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">-->
+                        <!--<i class="glyphicon glyphicon-home"></i>-->
+                    <!--</span>-->
+                    <!--<input type="text" class="form-control" id="country" name="country" placeholder="country" ng-model="signupVm.newUser.country" ng-minlength="2" required/>-->
+                <!--</div>-->
+                <!--<div ng-messages="signupForm.country.$error" ng-if="signupForm.country.$dirty">-->
+                    <!--<p ng-message="required" class="error">Country is required</p>-->
+                    <!--<p ng-message="minlength" class="error">Invalid Country</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" ng-model="signupVm.newUser.password" ng-minlength="8" required/>
+                </div>
+                <div ng-messages="signupForm.password.$error" ng-if="signupForm.password.$dirty">
+                    <p ng-message="required" class="error">Password is required</p>
+                    <p ng-message="minlength" class="error">Password has to be at least 8 characters</p>
                 </div>
             </div>
             <div class="form-group">
-                <label>Last Name</label>
+                <label for="confirmPassword">Confirm Password</label>
                 <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="last name"/>
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="confirm password" ng-model="signupVm.newUser.confirmPassword" ng-minlength="8" ng-pattern="{{signupVm.newUser.password}}" required/>
+                </div>
+                <div ng-messages="signupForm.confirmPassword.$error" ng-if="signupForm.confirmPassword.$dirty">
+                    <p ng-message="required" class="error">Confirm Password is required</p>
+                    <p ng-message="pattern" class="error">Confirm Password should match Password</p>
                 </div>
             </div>
             <div class="form-group">
-                <label>Email Address</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-envelope"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="email address"/>
-                </div>
+                <button class="btn btn-primary btn-block" ng-disabled="signupForm.$invalid">Sign-Up</button>
             </div>
-            <div class="form-group">
-                <label>Phone</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-earphone"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="phone number | format: 6666666666"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Address</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="address"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>City</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="city"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>State</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="state"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Country</label>
-                <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                    <input type="text" class="form-control" placeholder="country"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <div class="input-group">
-								<span class="input-group-addon">
-									<i class="glyphicon glyphicon-lock"></i>
-								</span>
-                    <input type="password" class="form-control" placeholder="password"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <div class="input-group">
-								<span class="input-group-addon">
-									<i class="glyphicon glyphicon-lock"></i>
-								</span>
-                    <input type="password" class="form-control" placeholder="confirm password"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" ng-click="signupVm.addUser()">Sign-Up</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
