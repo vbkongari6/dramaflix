@@ -18,6 +18,8 @@
         drm.getTopRatedMovies = getTopRatedMovies;
         drm.getTopRatedTVSeries = getTopRatedTVSeries;
         drm.getDramasByType = getDramasByType;
+        drm.getDramasByYear = getDramasByYear;
+        drm.getDramasByGenre = getDramasByGenre;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -52,6 +54,18 @@
         function getDramasByType (type) {
             console.log('In Drama Service: GET Dramas By Type');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/type=' + type)
+                .then(successFn, failureFn);
+        }
+
+        function getDramasByYear (year) {
+            console.log('In Drama Service: GET Dramas By Year');
+            return $http.get('http://localhost:8080/dramaflix/api/dramas/year=' + year)
+                .then(successFn, failureFn);
+        }
+
+        function getDramasByGenre (genre) {
+            console.log('In Drama Service: GET Dramas By Year');
+            return $http.get('http://localhost:8080/dramaflix/api/dramas/genre=' + genre)
                 .then(successFn, failureFn);
         }
         
