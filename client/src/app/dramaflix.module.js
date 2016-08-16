@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('dramaflix', ['ngRoute'])
+        .module('dramaflix', ['ngRoute','ngMessages'])
         .config(configureRoutes)
         .run(runModule);
 
@@ -24,15 +24,45 @@
                 controller: 'loginController',
                 controllerAs: 'loginVm'
             })
-            .when('/user-detail/:id', {
-                templateUrl: 'app/views/user-detail.tmpl.html',
-                controller: 'UserDetailController',
+            .when('/profile/:id', {
+                templateUrl: 'app/views/user-profile.tmpl.html',
+                controller: 'userProfileController',
                 controllerAs: 'userVm'
             })
-            .when('/add-user', {
-                templateUrl: 'app/views/add-user.tmpl.html',
-                controller: 'AddUserController',
-                controllerAs: 'addUserVm'
+            .when('/editprofile/:id', {
+                templateUrl: 'app/views/edit-user-profile.tmpl.html',
+                controller: 'editUserProfileController',
+                controllerAs: 'editUserVm'
+            })
+            .when('/alldramas', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'allDramasController',
+                controllerAs: 'allDramasVm'
+            })
+            .when('/adddrama', {
+                templateUrl: 'app/views/add-drama.tmpl.html',
+                controller: 'addDramaController',
+                controllerAs: 'addDramaVm'
+            })
+            .when('/drama/:id', {
+                templateUrl: 'app/views/drama-details.tmpl.html',
+                controller: 'dramaDetailsController',
+                controllerAs: 'dramaVm'
+            })
+            .when('/editdrama/:id', {
+                    templateUrl: 'app/views/edit-drama.tmpl.html',
+                    controller: 'editDramaController',
+                    controllerAs: 'editDramaVm'
+            })
+            .when('/topratedmovies', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'topRatedMoviesController',
+                controllerAs: 'allDramasVm'
+            })
+            .when('/topratedtvseries', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                controller: 'topRatedTVSeriesController',
+                controllerAs: 'allDramasVm'
             })
             .otherwise({
                 redirectTo: '/index'

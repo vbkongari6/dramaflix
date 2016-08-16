@@ -1,0 +1,50 @@
+.in-dramadetails {
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+
+.poster-image {
+    width: 200px;
+    height: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.poster-div {
+    padding: 15px;
+    text-align: center;
+}
+
+.dramadetails {
+    padding-bottom: 15px;
+}
+
+.dramadetails p{
+    text-align: left;
+}
+
+
+.metascore-image {
+    zoom: 24%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+
+
+.comments {
+    border-top: 1px solid lightgray;
+    text-align: left;
+}
+
+
+
+
+@media (min-width: 768px) {
+
+    .dramadetails h3{
+        text-align: left;
+        color: #333;
+    }
+
+}
