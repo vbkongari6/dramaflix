@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vbkongari.dramaflix.entity.DramaReview;
 
@@ -24,6 +25,16 @@ public class DramaReviewRepositoryImplementation implements DramaReviewRepositor
 	}
 	
 	@Override
+	public List<Object> findDramaComments(String dramaId) {
+		Query query = em.createNamedQuery("DramaReview.findDramaComments");
+		query.setParameter("pDramaId", dramaId);	
+		@SuppressWarnings("unchecked")
+		List<Object> list = query.getResultList();
+		return list;
+	}
+		
+	@Override
+	@Transactional
 	public DramaReview writeComment(DramaReview comment) {
 		em.persist(comment);
 		return comment;
@@ -44,14 +55,17 @@ public class DramaReviewRepositoryImplementation implements DramaReviewRepositor
 	}
 
 	@Override
+	@Transactional
 	public DramaReview editComment(DramaReview comment) {
 		return em.merge(comment);
 	}
 
 	@Override
+	@Transactional
 	public void deleteComment(String id, DramaReview comment) {
 		em.remove(comment);
 	}
+
 	
 	
 }

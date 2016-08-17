@@ -27,6 +27,11 @@ public class DramaReviewServiceImplementation implements DramaReviewService{
 	}
 
 	@Override
+	public List<Object> findDramaComments(String dramaId) {
+		return repository.findDramaComments(dramaId);
+	}	
+	
+	@Override
 	@Transactional
 	public DramaReview writeComment(DramaReview comment) {
 		comment.setTimestamp(new Date());
@@ -44,6 +49,7 @@ public class DramaReviewServiceImplementation implements DramaReviewService{
 	}
 
 	@Override
+	@Transactional
 	public DramaReview editComment(String id, DramaReview comment) {
 		DramaReview existing = repository.findComment(id);
 		if(existing == null) {
@@ -53,11 +59,14 @@ public class DramaReviewServiceImplementation implements DramaReviewService{
 	}
 
 	@Override
+	@Transactional
 	public void deleteComment(String id) {
 		DramaReview existing = repository.findComment(id);
 		if(existing == null) {
 			throw new DramaNotFoundException("Drama with id: " + id + " not found");
 		}
 		repository.deleteComment(id, existing);
-	}	
+	}
+
+	
 }

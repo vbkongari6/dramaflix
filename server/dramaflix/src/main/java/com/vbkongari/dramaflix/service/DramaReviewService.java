@@ -11,6 +11,8 @@ public interface DramaReviewService {
 	
 	public List<DramaReview> findAllComments();
 	
+	public List<Object> findDramaComments(String dramaId);
+	
 	public DramaReview writeComment(DramaReview comment);
 	
 	public double avgRating(String id);

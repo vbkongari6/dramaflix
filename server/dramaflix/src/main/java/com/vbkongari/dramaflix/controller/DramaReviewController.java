@@ -25,6 +25,11 @@ public class DramaReviewController {
 		return service.findAllComments();
 	}
 	
+	@RequestMapping(method=RequestMethod.GET,  path="drama/{id}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Object> findDramaComments(@PathVariable("id") String dramaId) {
+		return service.findDramaComments(dramaId);
+	}
+	
 	@RequestMapping(method=RequestMethod.GET, path="avgrating/{id}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public double avgRating(@PathVariable("id") String dramaId) {
 		return service.avgRating(dramaId);

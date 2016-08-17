@@ -25,7 +25,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Table
 @NamedQueries({ 
 	@NamedQuery(name = "DramaReview.findAllComments", query = "SELECT dr FROM DramaReview dr ORDER BY dr.timestamp DESC"),
-	@NamedQuery(name = "DramaReview.avgRating", query = "SELECT AVG(dr.rating + 0.0) FROM DramaReview dr WHERE dr.drama.id=:pDramaId")
+	@NamedQuery(name = "DramaReview.avgRating", query = "SELECT AVG(dr.rating + 0.0) FROM DramaReview dr WHERE dr.drama.id=:pDramaId"),
+	@NamedQuery(name = "DramaReview.findDramaComments", query = "SELECT u.firstName, dr.comment, dr.rating, dr.timestamp FROM DramaReview dr INNER JOIN User u ON u.id=dr.user.id WHERE dr.drama.id=:pDramaId")
 })
 public class DramaReview {
 	
@@ -37,10 +38,6 @@ public class DramaReview {
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@LazyCollection(LazyCollectionOption.FALSE)	
 	private User user;
-	
-
-	//@JoinColumn(name = "userId")
-	//private List<User> user;
 	
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -61,14 +58,6 @@ public class DramaReview {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-//	public List<User> getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(List<User> user) {
-//		this.user = user;
-//	}
 	
 	public User getUser() {
 		return user;
@@ -78,8 +67,6 @@ public class DramaReview {
 		this.user = user;
 	}
 	
-
-	
 	public Drama getDrama() {
 		return drama;
 	}
@@ -87,9 +74,6 @@ public class DramaReview {
 	public void setDrama(Drama drama) {
 		this.drama = drama;
 	}
-	
-	
-	
 
 	public int getRating() {
 		return rating;
