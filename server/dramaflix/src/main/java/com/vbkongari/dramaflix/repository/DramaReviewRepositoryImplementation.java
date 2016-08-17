@@ -32,8 +32,10 @@ public class DramaReviewRepositoryImplementation implements DramaReviewRepositor
 	@Override
 	public double avgRating(String id) {
 		Query query = em.createNamedQuery("DramaReview.avgRating");
-		query.setParameter("pDramaId", id);
-		return (double) query.getSingleResult();        
+		query.setParameter("pDramaId", id);		
+		Object result = query.getSingleResult();   
+		if (result != null) { return (double) result; }		
+		return 0;
 	}
 
 	@Override

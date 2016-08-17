@@ -48,7 +48,7 @@ public class DramaReview {
 	
 	//private List<Drama> drama;
 	
-	private int rating;
+	private int rating = 0;
 	private String comment;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -78,16 +78,7 @@ public class DramaReview {
 		this.user = user;
 	}
 	
-	
-	
 
-//	public List<Drama> getDrama() {
-//		return drama;
-//	}
-//
-//	public void setDrama(List<Drama> drama) {
-//		this.drama = drama;
-//	}
 	
 	public Drama getDrama() {
 		return drama;
