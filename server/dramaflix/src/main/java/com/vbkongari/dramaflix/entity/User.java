@@ -1,5 +1,7 @@
 package com.vbkongari.dramaflix.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,13 +30,27 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String address;
+	private String city;
+	private String state;
+	private String country;
+	private String zip;
 	
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String email;
 	
 	private String password;
 	private long phone;
+	private String userType = "user";
 
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateCreated;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateUpdated;
+
+	
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -65,6 +83,38 @@ public class User {
 		this.address = address;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -89,10 +139,39 @@ public class User {
 		this.phone = phone;
 	}
 
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", email=" + email + ", password=" + password + ", phone=" + phone + "]";
+				+ ", city=" + city + ", state=" + state + ", country=" + country + ", zip=" + zip + ", email=" + email
+				+ ", password=" + password + ", phone=" + phone + ", userType=" + userType + ", dateCreated="
+				+ dateCreated + ", dateUpdated=" + dateUpdated + "]";
 	}
+	
+	
+	
 	
 }

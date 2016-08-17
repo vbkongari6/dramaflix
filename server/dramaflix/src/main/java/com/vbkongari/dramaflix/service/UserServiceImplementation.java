@@ -1,5 +1,6 @@
 package com.vbkongari.dramaflix.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class UserServiceImplementation implements UserService {
 		if(existing != null) {
 			throw new UserAlreadyExistsException("User with email: " + user.getEmail() + " already exists");
 		}
+		user.setDateCreated(new Date());
 		return repository.addUser(user);
 	}
 
@@ -48,6 +50,7 @@ public class UserServiceImplementation implements UserService {
 		if(existing == null) {
 			throw new UserNotFoundException("User with id: " + id + " not found");
 		}
+		user.setDateUpdated(new Date());
 		return repository.updateUser(user);
 	}
 
