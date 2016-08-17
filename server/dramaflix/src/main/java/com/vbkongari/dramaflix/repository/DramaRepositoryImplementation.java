@@ -31,7 +31,7 @@ public class DramaRepositoryImplementation implements DramaRepository {
 			else if(type.trim().equalsIgnoreCase("tvseries")) { query.setParameter("pType", "series"); }	
 		}
 		else {
-			query = em.createNamedQuery("Drama.findTopRatedDramass", Drama.class);
+			query = em.createNamedQuery("Drama.sortDramasByIMDBRating", Drama.class);
 		}
 		return query.getResultList();
 	}	
@@ -58,8 +58,14 @@ public class DramaRepositoryImplementation implements DramaRepository {
 	}
 	
 	@Override
-	public List<Drama> sortDramasByYearDESC() {
-		TypedQuery<Drama> query = em.createNamedQuery("Drama.sortDramasByYearDESC", Drama.class);
+	public List<Drama> sortDramasBy(String sortBy) {
+		TypedQuery<Drama> query = null;
+		if(sortBy.trim().equalsIgnoreCase("year")){
+			query = em.createNamedQuery("Drama.sortDramasByYearDESC", Drama.class);
+		}
+		else if(sortBy.trim().equalsIgnoreCase("imdbvotes")){
+			query = em.createNamedQuery("Drama.sortDramasByIMDBVotes", Drama.class);
+		}		
 		return query.getResultList();
 	}
 

@@ -18,7 +18,7 @@ public interface DramaRepository {
 	
 	public Drama findOneDrama(String id);
 	
-	public List<Drama> sortDramasByYearDESC();
+	public List<Drama> sortDramasBy(String sortBy);
 	
 	public Drama findDramaByTitle(String title);
 	

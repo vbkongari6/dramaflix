@@ -44,8 +44,8 @@ public class DramaServiceImplementation implements DramaService{
 	}
 	
 	@Override
-	public List<Drama> sortDramasByYearDESC() {
-		return repository.sortDramasByYearDESC();
+	public List<Drama> sortDramasBy(String sortBy) {
+		return repository.sortDramasBy(sortBy);
 	}
 
 	

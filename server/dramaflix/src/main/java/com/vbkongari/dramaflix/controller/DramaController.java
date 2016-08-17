@@ -50,9 +50,9 @@ public class DramaController {
 		return service.findOneDrama(dramaId);
 	}	
 	
-	@RequestMapping(method=RequestMethod.GET, path="sort=year/DESC", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Drama> sortDramasByYearDESC() {
-		return service.sortDramasByYearDESC();
+	@RequestMapping(method=RequestMethod.GET, path="sort={sortBy}/DESC", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Drama> sortDramasBy(@PathVariable("sortBy") String sortBy) {
+		return service.sortDramasBy(sortBy);
 	}	
 	
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
