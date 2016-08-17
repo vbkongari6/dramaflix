@@ -81,6 +81,7 @@ public class DramaRepositoryImplementation implements DramaRepository {
 
 	@Override
 	public Drama addDrama(Drama drama) {
+		drama.setImdbVotes(drama.getImdbVotes().replace(",", ""));
 		em.persist(drama);
 		return drama;
 	}
