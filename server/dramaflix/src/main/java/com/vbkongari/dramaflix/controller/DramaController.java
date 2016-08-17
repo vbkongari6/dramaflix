@@ -60,6 +60,11 @@ public class DramaController {
 		return service.addDrama(drama);
 	}	
 	
+	@RequestMapping(method=RequestMethod.POST, path="many", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Drama> addDramas(@RequestBody List<Drama> dramas) {
+		return service.addDramas(dramas);
+	}	
+	
 	@RequestMapping(method=RequestMethod.PUT, path="{id}", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Drama updateDrama(@PathVariable("id") String dramaId, @RequestBody Drama drama) {
 		return service.updateDrama(dramaId, drama);
