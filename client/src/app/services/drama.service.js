@@ -24,6 +24,7 @@
         drm.getSortDramasByYear = getSortDramasByYear;
         drm.getSortDramasByIMDBRating = getSortDramasByIMDBRating;
         drm.getSortDramasByIMDBVotes = getSortDramasByIMDBVotes;
+        drm.getAvgDramaRating = getAvgDramaRating;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -34,6 +35,12 @@
         function getDrama (id) {
             console.log('In Drama Service: GET Drama');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/' + id)
+                .then(successFn, failureFn);
+        }
+
+        function getAvgDramaRating (id) {
+            console.log('In Drama Service: GET Drama Avg Rating');
+            return $http.get('http://localhost:8080/dramaflix/api//dramareviews/avgrating/' + id)
                 .then(successFn, failureFn);
         }
 

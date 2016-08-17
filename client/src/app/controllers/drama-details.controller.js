@@ -17,7 +17,12 @@
         dramaService.getDrama($routeParams.id)
             .then( function (data) {
                 dramaVm.drama = data;
-            }, function (errStatus) {
+                return dramaService.getAvgDramaRating($routeParams.id)
+            })
+            .then( function (data) {
+                dramaVm.drama.avgRating = data;
+            })
+            .catch(function (errStatus) {
                 console.log(errStatus);
 
 
