@@ -17,6 +17,7 @@
         drm.addDrama = addDrama;
         drm.getTopRatedMovies = getTopRatedMovies;
         drm.getTopRatedTVSeries = getTopRatedTVSeries;
+        drm.getTopRatedDramas = getTopRatedDramas;
         drm.getDramasByType = getDramasByType;
         drm.getDramasByYear = getDramasByYear;
         drm.getDramasByGenre = getDramasByGenre;
@@ -39,6 +40,12 @@
         function addDrama (drama) {
             console.log('In Drama Service: POST Drama');
             return $http.post('http://localhost:8080/dramaflix/api/dramas', drama)
+                .then(successFn, failureFn);
+        }
+
+        function getTopRatedDramas () {
+            console.log('In Drama Service: GET Top Rated Dramas');
+            return $http.get('http://localhost:8080/dramaflix/api/dramas/best')
                 .then(successFn, failureFn);
         }
         
@@ -79,9 +86,7 @@
         }
 
         function getSortDramasByIMDBRating () {
-            console.log('In Drama Service: GET Sorted Dramas By IMDB Rating');
-            return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBRating/DESC')
-                .then(successFn, failureFn);
+            return getTopRatedDramas();
         }
 
         function getSortDramasByIMDBVotes () {

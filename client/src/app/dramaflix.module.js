@@ -39,7 +39,7 @@
                 controller: 'editUserProfileController',
                 controllerAs: 'editUserVm'
             })
-            .when('/alldramas', {
+            .when('/dramas', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'allDramasController',
@@ -63,13 +63,13 @@
                 controller: 'editDramaController',
                 controllerAs: 'editDramaVm'
             })
-            .when('/topratedmovies', {
+            .when('/movies/toprated', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedMoviesController',
                 controllerAs: 'allDramasVm'
             })
-            .when('/topratedtvseries', {
+            .when('/tvseries/toprated', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedTVSeriesController',
@@ -109,6 +109,12 @@
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramasByIMDBVotesController',
+                controllerAs: 'allDramasVm'
+            })
+            .when('/dramas/toprated', {
+                templateUrl: 'app/views/all-dramas.tmpl.html',
+                caseInsensitiveMatch: true,
+                controller: 'topRatedDramasController',
                 controllerAs: 'allDramasVm'
             })
             .otherwise({
