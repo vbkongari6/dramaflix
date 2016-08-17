@@ -20,5 +20,8 @@
     </div>
     <div class="comments">
         <h4><u>Comments</u></h4>
+        <div ng-repeat="comment in dramaVm.drama.comments"><!-- track by $index"-->
+            <p>{{comment.firstName}} {{comment.timestamp}} {{comment.rating}} {{comment.comment}}</p>
+        </div>
     </div>
 </div>

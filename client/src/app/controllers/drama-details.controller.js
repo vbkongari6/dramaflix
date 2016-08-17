@@ -21,6 +21,10 @@
             })
             .then( function (data) {
                 dramaVm.drama.avgRating = data;
+                return dramaService.getDramaComments($routeParams.id)
+            })
+            .then( function (data) {
+                dramaVm.drama.comments = data;
             })
             .catch(function (errStatus) {
                 console.log(errStatus);
