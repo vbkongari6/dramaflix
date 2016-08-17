@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-//import javax.persistence.Query;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -31,20 +31,9 @@ public class DramaReviewRepositoryImplementation implements DramaReviewRepositor
 
 	@Override
 	public double avgRating(String id) {
-//		Query query = em.createNamedQuery("DramaReview.avgRating", DramaReview.class);
-//		query.setParameter("pDramaId", id);
-//		double v = (double) query.getResultList().get(0);
-//		System.out.println(v);
-//		System.out.println(v);
-//		System.out.println(v);
-//		System.out.println(v);
-//		System.out.println(v);
-//		return v;	
-
-//		TypedQuery<Object> query = em.createNamedQuery("DramaReview.avgRating", DramaReview.class);
-//		return query.getSingleResult();
-		//
-		return 0;
+		Query query = em.createNamedQuery("DramaReview.avgRating");
+		query.setParameter("pDramaId", id);
+		return (double) query.getSingleResult();        
 	}
 
 	@Override

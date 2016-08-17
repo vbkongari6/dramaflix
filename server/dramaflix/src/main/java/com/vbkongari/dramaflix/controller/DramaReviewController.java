@@ -41,13 +41,4 @@ public class DramaReviewController {
 		return service.writeComment(comment);
 	}
 	
-//	@RequestMapping(method=RequestMethod.PUT, path="{id}", consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-//	public DramaReview editComment(@PathVariable("id") String commentId, @RequestBody DramaReview comment) {
-//		return service.editComment(commentId, comment);
-//	}	
-//	
-//	@RequestMapping(method=RequestMethod.DELETE, path="{id}")
-//	public void deleteComment(@PathVariable("id") String commentId) {
-//		service.deleteComment(commentId);
-//	}	
 }
