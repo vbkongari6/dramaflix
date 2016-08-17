@@ -15,11 +15,12 @@ import org.hibernate.annotations.GenericGenerator;
 @NamedQueries({ 
 	@NamedQuery(name = "Drama.findAllDramas", query = "SELECT d FROM Drama d ORDER BY d.title ASC"),
 	@NamedQuery(name = "Drama.findDramaByTitle", query = "SELECT d FROM Drama d WHERE d.title=:pTitle"),
-	@NamedQuery(name = "Drama.findTopRatedDramas", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.imdbRating DESC"),
+	@NamedQuery(name = "Drama.findTopRatedDramas", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.imdbRating * 1 DESC"),
+	@NamedQuery(name = "Drama.findTopRatedDramass", query = "SELECT d FROM Drama d ORDER BY d.imdbRating * 1 DESC"),
 	@NamedQuery(name = "Drama.filterDramasByType", query = "SELECT d FROM Drama d WHERE d.type=:pType ORDER BY d.title ASC"),
 	@NamedQuery(name = "Drama.filterDramasByYear", query = "SELECT d FROM Drama d WHERE d.year=:pYear ORDER BY d.title ASC"),
 	@NamedQuery(name = "Drama.filterDramasByGenre", query = "SELECT d FROM Drama d WHERE LOWER(d.genre) LIKE LOWER(CONCAT('%',:pGenre,'%')) ORDER BY d.title ASC"),
-	@NamedQuery(name = "Drama.sortDramasByYearDESC", query = "SELECT d FROM Drama d ORDER BY d.year DESC")
+	@NamedQuery(name = "Drama.sortDramasByYearDESC", query = "SELECT d FROM Drama d ORDER BY d.year * 1 DESC")
 })
 public class Drama {
 	
@@ -28,24 +29,30 @@ public class Drama {
 	@GeneratedValue(generator = "customUUID")
 	private String id;
 	
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String title;
 	
-	private int year;
+	private String year;
 	private String rated;
 	private String released;
 	private String runtime;
 	private String genre;
 	private String director;
+	
+	@Column(columnDefinition="TEXT")
 	private String writer;
+	
 	private String actors;
+	
+	@Column(columnDefinition="TEXT")
 	private String plot;
+	
 	private String language;
 	private String country;
 	private String awards;
 	private String poster;
-	private float metascore;
-	private float imdbRating;
+	private String metascore;
+	private String imdbRating;
 	private String imdbVotes;
 	private String imdbID;
 	private String type;
@@ -62,10 +69,10 @@ public class Drama {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	public String getRated() {
@@ -140,16 +147,16 @@ public class Drama {
 	public void setPoster(String poster) {
 		this.poster = poster;
 	}
-	public float getMetascore() {
+	public String getMetascore() {
 		return metascore;
 	}
-	public void setMetascore(float metascore) {
+	public void setMetascore(String metascore) {
 		this.metascore = metascore;
 	}
-	public float getImdbRating() {
+	public String getImdbRating() {
 		return imdbRating;
 	}
-	public void setImdbRating(float imdbRating) {
+	public void setImdbRating(String imdbRating) {
 		this.imdbRating = imdbRating;
 	}
 	public String getImdbVotes() {
