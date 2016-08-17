@@ -1,5 +1,6 @@
 package com.vbkongari.dramaflix.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,22 @@ public class DramaServiceImplementation implements DramaService{
 		}
 		return repository.addDrama(drama);
 	}
-
+	
+	@Override
+	@Transactional
+	public List<Drama> addDramas(List<Drama> dramas) {
+		List<Drama> dramasAdded = new ArrayList<Drama>();
+		for (final Drama drama : dramas) {
+			Drama existing = repository.findDramaByTitle(drama.getTitle());
+			if(existing != null) {
+				throw new DramaAlreadyExistsException("Drama with title: " + drama.getTitle() + " already exists");
+			}
+			dramasAdded.add(repository.addDrama(drama));
+		}		
+		return dramasAdded;
+	}
+	
+	
 	@Override
 	@Transactional
 	public Drama updateDrama(String id, Drama drama) {
@@ -88,6 +104,10 @@ public class DramaServiceImplementation implements DramaService{
 		}
 		repository.deleteDrama(id, existing);
 	}
+
+	
+
+	
 
 	
 

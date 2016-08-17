@@ -22,6 +22,8 @@ public interface DramaService {
 	
 	public Drama addDrama(Drama drama);
 	
+	public List<Drama> addDramas(List<Drama> dramas);
+	
 	public Drama updateDrama(String id, Drama drama);
 	
 	public void deleteDrama(String id);

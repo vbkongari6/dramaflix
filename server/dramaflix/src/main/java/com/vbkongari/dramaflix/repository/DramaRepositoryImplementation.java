@@ -24,9 +24,15 @@ public class DramaRepositoryImplementation implements DramaRepository {
 	
 	@Override
 	public List<Drama> findTopRatedDramas(String type) {
-		TypedQuery<Drama> query = em.createNamedQuery("Drama.findTopRatedDramas", Drama.class);
-		if(type.equalsIgnoreCase("movies")) { query.setParameter("pType", "movie"); }
-		else if(type.equalsIgnoreCase("tvseries")) { query.setParameter("pType", "series"); }		
+		TypedQuery<Drama> query;
+		if(type.trim().length() > 0) {
+			query = em.createNamedQuery("Drama.findTopRatedDramas", Drama.class);
+			if(type.trim().equalsIgnoreCase("movies")) { query.setParameter("pType", "movie"); }
+			else if(type.trim().equalsIgnoreCase("tvseries")) { query.setParameter("pType", "series"); }	
+		}
+		else {
+			query = em.createNamedQuery("Drama.findTopRatedDramass", Drama.class);
+		}
 		return query.getResultList();
 	}	
 	
