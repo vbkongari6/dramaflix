@@ -34,8 +34,8 @@ public class UserServiceImplementation implements UserService {
 	
 	@Override
 	public User userAuthentication(User user) {	
-		User existing = repository.findUserByEmail(user.getEmail());		
-		if(existing != null && existing.getEmail() == user.getEmail() && existing.getPassword() == user.getPassword()) {
+		User existing = repository.findUserByEmail(user.getEmail());
+		if(existing != null && (existing.getEmail()).equals(user.getEmail()) && (existing.getPassword()).equals(user.getPassword())) {
 			return existing;
 		}
 		else {
