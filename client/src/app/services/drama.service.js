@@ -51,6 +51,20 @@
                 .then(successFnEdit, failureFn);
         }
 
+        function successFnEdit (response) {
+            var reviews = [];
+            response = response.data;
+            response.forEach( function (rD) { // rD - reviewDetails
+                var review = {};
+                review.firstName = rD[0];
+                review.comment = rD[1];
+                review.rating = rD[2];
+                review.timestamp = rD[3];
+                reviews.push(review);
+            });
+            return reviews;
+        }
+
         function addDrama (drama) {
             console.log('In Drama Service: POST Drama');
             return $http.post('http://localhost:8080/dramaflix/api/dramas', drama)
@@ -108,20 +122,12 @@
             return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBVotes/DESC')
                 .then(successFn, failureFn);
         }
+        
 
-        function successFnEdit (response) {
-            var reviews = [];
-            response = response.data;
-            response.forEach( function (rD) { // rD - reviewDetails
-                var review = {};
-                review.firstName = rD[0];
-                review.comment = rD[1];
-                review.rating = rD[2];
-                review.timestamp = rD[3];
-                reviews.push(review);
-            });
-            return reviews;
-        }
+
+
+
+
 
         function successFn (response) {
             return response.data;

@@ -2,19 +2,19 @@
     <div class="col-md-4 col-md-offset-4 well">
         <h1 class="text-center">SIGN-UP</h1>
         <form name="signupForm" ng-submit="signupForm.$setPristine(); signupVm.addUser()" novalidate>
-            <!--<div class="form-group">-->
-                <!--<label for="firstName">First Name</label>-->
-                <!--<div class="input-group">-->
-                    <!--<span class="input-group-addon">-->
-                        <!--<i class="glyphicon glyphicon-user"></i>-->
-                    <!--</span>-->
-                    <!--<input type="text" class="form-control" id="firstName" name="firstName" placeholder="first name" ng-model="signupVm.newUser.firstName" required ng-minlength="3"/>-->
-                <!--</div>-->
-                <!--<div ng-messages="signupForm.firstName.$error" ng-if="signupForm.firstName.$dirty">-->
-                    <!--<p ng-message="required" class="error">First Name is required</p>-->
-                    <!--<p ng-message="minlength" class="error">First Name has to be at least 3 characters</p>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="first name" ng-model="signupVm.newUser.firstName" required ng-minlength="3"/>
+                </div>
+                <div ng-messages="signupForm.firstName.$error" ng-if="signupForm.firstName.$dirty">
+                    <p ng-message="required" class="error">First Name is required</p>
+                    <p ng-message="minlength" class="error">First Name has to be at least 3 characters</p>
+                </div>
+            </div>
             <!--<div class="form-group">-->
                 <!--<label for="lastName">Last Name</label>-->
                 <!--<div class="input-group">-->

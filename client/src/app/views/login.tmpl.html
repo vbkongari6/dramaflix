@@ -1,30 +1,35 @@
 <div class="login-container login-body">
-    <div class="row margin-zero">
-        <div class="col-md-4 col-md-offset-4 well">
-            <h1 class="text-center">LOGIN</h1>
-            <form action="">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input type="text" class="form-control" placeholder="email address"/>
-                    </div>
+    <div class="col-md-4 col-md-offset-4 well">
+        <h1 class="text-center">LOGIN</h1>
+        <form name="loginForm" ng-submit="loginForm.$setPristine(); loginVm.validateUser()" novalidate>
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="email address" ng-model="loginVm.user.email" required/>
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-lock"></i>
-                        </span>
-                        <input type="password" class="form-control" placeholder="password"/>
-                    </div>
+                <div ng-messages="loginForm.emailAddress.$error" ng-if="loginForm.emailAddress.$dirty">
+                    <p ng-message="required" class="error">Email Address is required</p>
+                    <p ng-message="email" class="error">Invalid Email Address</p>
                 </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-block">Sign-in</button>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" ng-model="loginVm.user.password" required/>
                 </div>
-            </form>
-        </div>
+                <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
+                    <p ng-message="required" class="error">Password is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" ng-disabled="loginForm.$invalid">Sign-in</button>
+            </div>
+        </form>
     </div>
 </div>

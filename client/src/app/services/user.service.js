@@ -12,10 +12,17 @@
     function userService ($http, $q) {
         var usr = this;
 
+        usr.validateUser = validateUser;
         usr.getUsers = getUsers;
         usr.getUser = getUser;
         usr.addUser = addUser;
 
+        function validateUser(user) {
+            console.log('In User Service: Validate User');
+            return $http.post('http://localhost:8080/dramaflix/api/users/authenticate', user)
+                .then(successFn, failureFn);
+        }
+        
         function getUsers () {
             console.log('In User Service: GET Users');
             return $http.get('http://localhost:8080/dramaflix/api/users')
