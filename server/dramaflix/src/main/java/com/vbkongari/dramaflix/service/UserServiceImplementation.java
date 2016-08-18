@@ -31,6 +31,17 @@ public class UserServiceImplementation implements UserService {
 		}
 		return existing;
 	}
+	
+	@Override
+	public User userAuthentication(User user) {	
+		User existing = repository.findUserByEmail(user.getEmail());		
+		if(existing != null && existing.getEmail() == user.getEmail() && existing.getPassword() == user.getPassword()) {
+			return existing;
+		}
+		else {
+			throw new UserNotFoundException("User with the given credentials doesn't exist");
+		}		
+	}
 
 	@Override
 	@Transactional
@@ -64,4 +75,5 @@ public class UserServiceImplementation implements UserService {
 		repository.deleteUser(existing);		
 	}
 
+	
 }

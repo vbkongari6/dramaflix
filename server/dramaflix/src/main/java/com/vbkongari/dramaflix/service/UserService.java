@@ -10,6 +10,8 @@ public interface UserService {
 	
 	public User findUser(String id);
 	
+	public User userAuthentication(User user);
+		
 	public User addUser(User user);
 	
 	public User updateUser(String id, User user);

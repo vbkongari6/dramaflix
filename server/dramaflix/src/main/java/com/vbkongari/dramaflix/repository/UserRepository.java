@@ -9,7 +9,7 @@ public interface UserRepository {
 	public List<User> findAllUsers();
 	
 	public User findUser(String id);
-	
+		
 	public User findUserByEmail(String email);
 	
 	public User addUser(User user);
