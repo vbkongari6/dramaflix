@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('dramaflix', ['ngRoute','ngMessages'])
+        .module('dramaflix', ['ngRoute','ngMessages', 'angular-jwt'])
         .config(configureRoutes)
         .run(runModule);
 
-    configureRoutes.$inject = ['$routeProvider'];
-    function configureRoutes ($routeProvider) {
+    configureRoutes.$inject = ['$routeProvider', 'jwtInterceptorProvider', '$httpProvider'];
+    function configureRoutes ($routeProvider, jwtInterceptorProvider, $httpProvider) {
         $routeProvider
             .when('/index', {
                 templateUrl: 'app/views/index.tmpl.html',
@@ -31,99 +31,152 @@
                 templateUrl: 'app/views/user-profile.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'userProfileController',
-                controllerAs: 'userVm'
+                controllerAs: 'userVm',
+                data: { requiresLogin: true}
             })
             .when('/editprofile/:id', {
                 templateUrl: 'app/views/edit-user-profile.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'editUserProfileController',
-                controllerAs: 'editUserVm'
+                controllerAs: 'editUserVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'allDramasController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/adddrama', {
                 templateUrl: 'app/views/add-drama.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'addDramaController',
-                controllerAs: 'addDramaVm'
+                controllerAs: 'addDramaVm',
+                data: { requiresLogin: true}
             })
             .when('/drama/:id', {
                 templateUrl: 'app/views/drama-details.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaDetailsController',
-                controllerAs: 'dramaVm'
+                controllerAs: 'dramaVm',
+                data: { requiresLogin: true}
             })
             .when('/editdrama/:id', {
                 templateUrl: 'app/views/edit-drama.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'editDramaController',
-                controllerAs: 'editDramaVm'
+                controllerAs: 'editDramaVm',
+                data: { requiresLogin: true}
             })
             .when('/movies/toprated', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedMoviesController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/tvseries/toprated', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedTVSeriesController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/type/:type', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaTypeController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/year/:year', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaYearController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/genre/:genre', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaGenreController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/sortByYear', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramaByYearController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/sortByIMDBRating', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramaByIMDBRatingController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/sortByIMDBVotes', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramasByIMDBVotesController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .when('/dramas/toprated', {
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedDramasController',
-                controllerAs: 'allDramasVm'
+                controllerAs: 'allDramasVm',
+                data: { requiresLogin: true}
             })
             .otherwise({
                 redirectTo: '/index'
             });
+
+        jwtInterceptorProvider.tokenGetter = function () {
+            return localStorage.getItem('jwt');
+        }
+
+        $httpProvider.interceptors.push('jwtInterceptor');
     }
 
-    function runModule () {
+    runModule.inject = ['$rootScope', '$location'];
+    function runModule ($rootScope, $location) {
         console.log('App Started');
+
+        $rootScope.$on('$routeChangeStart', function (event, to) {
+           if (to.data && to.data.requiresLogin) {
+               if (!localStorage.getItem('jwt')) {
+                   event.preventDefault();
+                   $location.path('/login');
+               }
+           }
+        });
     }
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

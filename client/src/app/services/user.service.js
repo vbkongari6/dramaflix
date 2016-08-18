@@ -20,7 +20,7 @@
         function validateUser(user) {
             console.log('In User Service: Validate User');
             return $http.post('http://localhost:8080/dramaflix/api/users/authenticate', user)
-                .then(successFn, failureFn);
+                .then(successFnJWT, failureFn);
         }
         
         function getUsers () {
@@ -38,10 +38,13 @@
         function addUser (user) {
             console.log('In User Service: POST User');
             return $http.post('http://localhost:8080/dramaflix/api/users', user)
-                .then(successFn, failureFn);
+                .then(successFnJWT, failureFn);
         }
 
-
+        function successFnJWT (response) {
+            localStorage.setItem('jwt', response.data.token);
+            return response.data;
+        }
 
         function successFn (response) {
             return response.data;
