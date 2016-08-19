@@ -1,0 +1,38 @@
+<div class="col-xs-12 col-md-2 signed-header-title">
+    <strong>d r a m a f l i x</strong>
+</div>
+<div ng-controller="navSearchController as navSearchVm" class="col-md-10 nav-search-div">
+    <div class="form-group select-divs">
+        <select class="form-control" ng-model="navSearchVm.chosen" ng-change="navSearchVm.goto(navSearchVm.chosen)">
+            <option ng-selected="true" value="" disabled>Type</option>
+            <option value="/dramas">Dramas</option>
+            <option value="/dramas/type/movie">Movies</option>
+            <option value="/dramas/type/series">TV Series</option>
+            <option disabled>───────────</option>
+            <option value="/dramas/toprated">Top Rated Dramas</option>
+            <option value="/movies/toprated">Top Rated Movies</option>
+            <option value="/tvseries/toprated">Top Rated TV Series</option>
+        </select>
+    </div>
+    <div class="form-group select-divs">
+        <select class="form-control" ng-model="navSearchVm.sortBy" ng-change="navSearchVm.goto(navSearchVm.sortBy)">
+            <option ng-selected="true" value="" disabled>Sort By</option>
+            <option value="/dramas/sortByYear">Year</option>
+            <option value="/dramas/sortByIMDBVotes">IMDB Votes</option>
+            <option value="/dramas/sortByIMDBRating">IMDB Rating</option>
+        </select>
+    </div>
+    <div class="form-group select-divs">
+        <select class="form-control" ng-model="navSearchVm.selectedGenre" ng-options="genre for genre in navSearchVm.genreList | orderBy:'toString()'" ng-change="navSearchVm.goto('/dramas/genre/'+navSearchVm.selectedGenre)">
+            <option ng-selected="true" value="" disabled>Genre</option>
+        </select>
+    </div>
+    <div class="form-group select-divs">
+        <select class="form-control" ng-model="navSearchVm.selectedYear" ng-options="year for year in navSearchVm.yearList" ng-change="navSearchVm.goto('/dramas/year/'+navSearchVm.selectedYear)">
+            <option ng-selected="true" value="" disabled>Year</option>
+        </select>
+    </div>
+    <div class="form-group search-bar">
+        <input type="text" class="form-control auto-width" placeholder="search"/>
+    </div>
+</div>
