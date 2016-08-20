@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('allDramasController', allDramasController);
 
-    allDramasController.$inject = ['dramaService'];
-    function allDramasController (dramaService) {
+    allDramasController.$inject = ['dramaService', '$scope'];
+    function allDramasController (dramaService, $scope) {
         var allDramasVm = this;
 
         console.log('In All Dramas Controller');
@@ -19,10 +19,11 @@
                 allDramasVm.dramas = data;
             }, function (errStatus) {
                 console.log(errStatus);
-
-
-
             });
+
+        $scope.$on('searching', function (event, data) {
+            allDramasVm.searchText = data;
+        });
 
     }
 })();

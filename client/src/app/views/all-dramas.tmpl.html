@@ -1,5 +1,5 @@
-<div class="container img-width-alldramas">
-    <div ng-repeat="drama in allDramasVm.dramas" class="inline-blocking">
+<div class="container alldramas-div">
+    <div ng-repeat="drama in allDramasVm.dramas | filter:allDramasVm.searchText" class="inline-blocking">
         <a ng-href="#/drama/{{drama.id}}">
             <img ng-src="{{drama.poster}}" class="img-responsive image-settings" alt="{{drama.title}}"><br>
             <p class="inline-blocking">{{drama.title}}</p>
