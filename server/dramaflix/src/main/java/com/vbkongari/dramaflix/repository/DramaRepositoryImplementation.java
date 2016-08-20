@@ -46,7 +46,7 @@ public class DramaRepositoryImplementation implements DramaRepository {
 	@Override
 	public List<Drama> filterDramasByYear(int year) {
 		TypedQuery<Drama> query = em.createNamedQuery("Drama.filterDramasByYear", Drama.class);
-		query.setParameter("pYear", year);
+		query.setParameter("pYear", Integer.toString(year));
 		return query.getResultList();
 	}
 
