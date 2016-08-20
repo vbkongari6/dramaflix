@@ -138,7 +138,7 @@
 
         jwtInterceptorProvider.tokenGetter = function () {
             return localStorage.getItem('jwt');
-        }
+        };
 
         $httpProvider.interceptors.push('jwtInterceptor');
     }
@@ -148,35 +148,23 @@
         console.log('App Started');
 
         $rootScope.$on('$routeChangeStart', function (event, to) {
-           if (to.data && to.data.requiresLogin) {
-               if (!localStorage.getItem('jwt')) {
-                   event.preventDefault();
-                   $location.path('/login');
-               }
-           }
+            var token = localStorage.getItem('jwt');
+
+            if (to.data && to.data.requiresLogin) {
+                if (!token) {
+                    event.preventDefault();
+                    $location.path('/login');
+                }
+            }
+            else if (!to.data) {
+                if (token && _.includes(['indexController', 'signupController', 'loginController'], to.controller)) {
+                    $location.path('/dramas');
+                }
+                token = null;
+            }
+
+            $rootScope.$broadcast('isUserExist', token);
         });
     }
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
