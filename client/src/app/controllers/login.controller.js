@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('loginController', loginController);
 
-    loginController.$inject = ['userService', '$location'];
-    function loginController (userService, $location) {
+    loginController.$inject = ['userService', 'dramaService', '$location'];
+    function loginController (userService, dramaService, $location) {
         var loginVm = this;
 
         loginVm.validateUser = validateUser;
@@ -18,9 +18,11 @@
 
         function validateUser() {
             console.log('In Login Controller');
+
             userService.validateUser(loginVm.user)
-                .then( function (response) {
+                .then( function (data) {
                     console.log('Login successful');
+                    localStorage.setItem('id', data.id);
                     $location.path('');
                 })
                 .catch( function (errStatus) {

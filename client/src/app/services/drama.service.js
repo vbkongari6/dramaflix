@@ -26,6 +26,7 @@
         drm.getSortDramasByIMDBVotes = getSortDramasByIMDBVotes;
         drm.getAvgDramaRating = getAvgDramaRating;
         drm.getDramaComments = getDramaComments;
+        drm.postComment = postComment;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -36,7 +37,7 @@
         function getDrama (id) {
             console.log('In Drama Service: GET Drama');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/' + id)
-                .then(successFn, failureFn);
+                .then(successFn3, failureFn);
         }
 
         function getAvgDramaRating (id) {
@@ -122,6 +123,17 @@
             return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBVotes/DESC')
                 .then(successFn2, failureFn);
         }
+
+        function postComment(comment) {
+            console.log('In Drama Service: POST Comment');
+            var commentDetails = {
+                comment: comment,
+                user: { id: localStorage.getItem('id') },
+                drama: { id: drm.dramaId }
+            }
+            return $http.post('http://localhost:8080/dramaflix/api/dramareviews/comment', commentDetails)
+                .then(successFn, failureFn);
+        }
         
 
 
@@ -137,6 +149,12 @@
                     datum.title = _.truncate(datum.title, {'length': 18});
                 }
             });
+            return response;
+        }
+
+        function successFn3 (response) {
+            response = response.data;
+            drm.dramaId = response.id;
             return response;
         }
         

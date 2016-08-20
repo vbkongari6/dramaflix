@@ -23,10 +23,19 @@
             </p>
         </div>
     </div>
-    <div class="comments">
+    <div class="comments-div">
         <p><strong>Comments</strong></p>
-        <div ng-repeat="comment in dramaVm.drama.comments" class="comment"><!-- track by $index"-->
-            <div class="comment-wrapper">
+        <div class="form-group comment-box">
+            <form name="commentBoxForm" ng-submit="commentBoxForm.$setPristine(); dramaVm.postComment()" novalidate>
+                <textarea class="form-control" rows="3" id="comment" ng-model="dramaVm.comment" placeholder="comment here.." required>
+                </textarea>
+                <div class="form-group comment-button-div">
+                    <button class="btn btn-primary comment-button" ng-disabled="commentBoxForm.$invalid">Enter</button>
+                </div>
+            </form>
+        </div>
+        <div ng-repeat="comment in dramaVm.drama.comments | orderBy:'-timestamp'" class="comments"><!-- track by $index"-->
+            <div class="comments-wrapper">
                 <p><span>{{comment.firstName}}</span> &emsp; {{comment.rating}} &emsp; {{comment.timestamp | date:'MM-dd-yyyy'}}</p>
                 <p>{{comment.comment}}</p>
             </div>

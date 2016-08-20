@@ -35,26 +35,42 @@
     border-radius: 10px;
 }
 
-.comments {
+.comments-div {
     border-top: 1px solid lightgray;
     padding: 15px;
 }
 
-.comments strong {
+.comments-div strong {
     color: #ec971f;
     font-size: 1.2em;
     text-decoration: underline;
 }
 
-.comment {
-    border-bottom: 1px solid lightgray;
+.comments {
+    border-bottom: 1px solid black;
 }
 
-.comment-wrapper {
+.comments-wrapper {
     margin-top: 6px;
 }
+
+.comment-button {
+    padding: 3px 9px;
+    font-size: 10px;
+}
+
+
 
 
 
 @media (min-width: 768px) {
+    .comment-box {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .comment-button-div {
+        text-align: right;
+    }
 }
