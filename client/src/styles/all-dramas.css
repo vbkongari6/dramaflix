@@ -1,28 +1,38 @@
+.alldramas-div {
+    background-color: #0f0f0f;
+    text-align: center;
+    border: 1px solid lightgray;
+    padding-top: 15px;
+    font-size: small;
+}
+
 .image-settings {
     display: inline;
-    border: 3px solid lightgray;
-}
-
-.img-width-alldramas {
-    text-align: center;
+    border: 1px solid lightgray;
 }
 
 
-.img-width-alldramas img{
+
+
+.alldramas-div img{
     width: 120px;
     height: 180px;
-    margin: 2px 0px 2px 0px;
+    margin: 2px 2px;
 }
 
+
+
+
+
+
+
+
 @media (min-width: 768px) {
-
-    .img-width-alldramas img{
-        width: 200px;
-        height: 300px;
-        margin: 3px 2px 3px 2px;
+    .alldramas-div img{
+        width: 130px;
+        height: 200px;
+        margin: 3px 2px;
     }
-
-
 
 
 
