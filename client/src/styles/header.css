@@ -5,6 +5,11 @@
     text-align: center;
 }
 
+.signed-header-title a {
+    color: navy;
+    text-decoration: none;
+}
+
 .nav-search-div {
     text-align: center;
 }
