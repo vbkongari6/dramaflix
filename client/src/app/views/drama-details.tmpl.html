@@ -1,27 +1,35 @@
-<ng-include src="'app/views/search.tmpl.html'"></ng-include>
 <div class="container in-dramadetails">
-    <div class="row">
+    <div class="row dramadetails-div">
         <div class="col-xs-12 col-md-4 poster-div">
             <img src="{{dramaVm.drama.poster}}" class="img-responsive poster-image" alt="{{dramaVm.drama.title}}">
         </div>
-        <div class="col-xs-12 col-md-6 dramadetails">
-            <p><h3>{{dramaVm.drama.title}}</h3></p>
-            <p>{{dramaVm.drama.type}} | {{dramaVm.drama.language}} | {{dramaVm.drama.rated}} | {{dramaVm.drama.released}} ({{dramaVm.drama.country}}) | {{dramaVm.drama.runtime}} | {{dramaVm.drama.genre}}</p>
-            <p><a ng-href="http://www.imdb.com/title/{{dramaVm.drama.imdbID}}">
-                <img src="http://ia.media-imdb.com/images/M/MV5BMTgyOTIzMTA0NV5BMl5BcG5nXkFtZTcwMTA3MDg2OA@@._V1_.png" class="img-responsive inline-blocking" alt="IMDB"></a> {{dramaVm.drama.imdbRating}} from {{dramaVm.drama.imdbVotes}} votes
-                <img src="http://www.metacritic.com/images/layout/mc_logo_inverted.png" class="img-responsive inline-blocking metascore-image" alt="Metascore"> {{dramaVm.drama.metascore}}</p>
-            <p>Actors: {{dramaVm.drama.actors}}</p>
-            <p>Director: {{dramaVm.drama.director}}</p>
-            <p>Writer: {{dramaVm.drama.writer}}</p>
-            <p>Plot: {{dramaVm.drama.plot}}</p>
-            <p>Awards: {{dramaVm.drama.awards}}</p>
-            <p>Dramaflix User Rating: {{dramaVm.drama.avgRating}}</p>
+        <div class="col-xs-12 col-md-7 dramadetails">
+            <p><strong>{{dramaVm.drama.title}}</strong></p>
+            <p>{{dramaVm.drama.type}} | {{dramaVm.drama.rated}} | {{dramaVm.drama.released}} ({{dramaVm.drama.country}}) | {{dramaVm.drama.runtime}} | {{dramaVm.drama.genre}} | {{dramaVm.drama.language}}</p>
+            <p>
+                <a ng-href="http://www.imdb.com/title/{{dramaVm.drama.imdbID}}">
+                    <img src="http://ia.media-imdb.com/images/M/MV5BMTgyOTIzMTA0NV5BMl5BcG5nXkFtZTcwMTA3MDg2OA@@._V1_.png" class="img-responsive inline-blocking" alt="IMDB">
+                </a>&nbsp;{{dramaVm.drama.imdbRating}} from {{dramaVm.drama.imdbVotes}} votes &emsp;
+                <img src="http://www.metacritic.com/images/layout/mc_logo_inverted.png" class="img-responsive inline-blocking metascore-image" alt="Metascore"> &nbsp;
+                {{dramaVm.drama.metascore}}
+            </p>
+            <p><span>Cast:</span>&nbsp; {{dramaVm.drama.actors}}</p>
+            <p><span>Director:</span>&nbsp; {{dramaVm.drama.director}}</p>
+            <p><span>Writer:</span>&nbsp; {{dramaVm.drama.writer}}</p>
+            <p><span>Plot:</span>&nbsp; {{dramaVm.drama.plot}}</p>
+            <p><span>Awards:</span>&nbsp; {{dramaVm.drama.awards}}</p>
+            <p><span>Dramaflix User Rating:</span>&nbsp; {{dramaVm.drama.avgRating}} &emsp;
+                <span>Your Rating:</span>&nbsp;
+            </p>
         </div>
     </div>
     <div class="comments">
-        <h4><u>Comments</u></h4>
-        <div ng-repeat="comment in dramaVm.drama.comments"><!-- track by $index"-->
-            <p>{{comment.firstName}} {{comment.timestamp}} {{comment.rating}} {{comment.comment}}</p>
+        <p><strong>Comments</strong></p>
+        <div ng-repeat="comment in dramaVm.drama.comments" class="comment"><!-- track by $index"-->
+            <div class="comment-wrapper">
+                <p><span>{{comment.firstName}}</span> &emsp; {{comment.rating}} &emsp; {{comment.timestamp | date:'MM-dd-yyyy'}}</p>
+                <p>{{comment.comment}}</p>
+            </div>
         </div>
     </div>
 </div>

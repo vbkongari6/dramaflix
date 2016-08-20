@@ -16,6 +16,8 @@
 
         dramaService.getDrama($routeParams.id)
             .then( function (data) {
+                if (data.type === 'movie') { data.type = 'Movie'}
+                else if (data.type === 'series') { data.type = 'TV Series'}
                 dramaVm.drama = data;
                 return dramaService.getAvgDramaRating($routeParams.id)
             })
@@ -28,10 +30,9 @@
             })
             .catch(function (errStatus) {
                 console.log(errStatus);
-
-
-
             });
+
+
 
 
     }
