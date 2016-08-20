@@ -30,7 +30,7 @@
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
             return $http.get('http://localhost:8080/dramaflix/api/dramas')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getDrama (id) {
@@ -74,43 +74,43 @@
         function getTopRatedDramas () {
             console.log('In Drama Service: GET Top Rated Dramas');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/best')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
         
         function getTopRatedMovies () {
             console.log('In Drama Service: GET Top Rated Movies');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/bestmovies')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function  getTopRatedTVSeries () {
             console.log('In Drama Service: GET Top Rated TV Series');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/besttvseries')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getDramasByType (type) {
             console.log('In Drama Service: GET Dramas By Type');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/type=' + type)
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getDramasByYear (year) {
             console.log('In Drama Service: GET Dramas By Year');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/year=' + year)
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getDramasByGenre (genre) {
             console.log('In Drama Service: GET Dramas By Year');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/genre=' + genre)
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getSortDramasByYear () {
             console.log('In Drama Service: GET Sorted Dramas By Year');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=year/DESC')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
 
         function getSortDramasByIMDBRating () {
@@ -120,17 +120,24 @@
         function getSortDramasByIMDBVotes () {
             console.log('In Drama Service: GET Sorted Dramas By IMDB Votes');
             return $http.get('http://localhost:8080/dramaflix/api/dramas/sort=IMDBVotes/DESC')
-                .then(successFn, failureFn);
+                .then(successFn2, failureFn);
         }
         
 
 
 
-
-
-
         function successFn (response) {
             return response.data;
+        }
+
+        function successFn2 (response) {
+            response = response.data;
+            response.forEach( function (datum) {
+                if (datum.title.length > 18) {
+                    datum.title = _.truncate(datum.title, {'length': 18});
+                }
+            });
+            return response;
         }
         
         function failureFn (response) {
