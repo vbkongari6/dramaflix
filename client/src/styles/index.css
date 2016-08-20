@@ -1,0 +1,37 @@
+.signup-login-div-wrapper {
+    width:100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.signup-login-div {
+    background-color: rgba(255,255,255,0.9);
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.signup-login-div button {
+    padding-top: 3px;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    .signup-login-div {
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .signup-login-div p {
+        display: block;
+    }
+
+    .signup-login-div button {
+        margin: 5px;
+    }
+}
