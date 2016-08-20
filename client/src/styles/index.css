@@ -22,9 +22,12 @@
 
 @media (min-width: 768px) {
     .signup-login-div {
+        width: 50%;
         padding: 10px;
         text-align: center;
         font-size: 1.2em;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .signup-login-div p {
