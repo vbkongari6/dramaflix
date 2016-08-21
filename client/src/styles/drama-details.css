@@ -54,6 +54,10 @@
     margin-top: 6px;
 }
 
+.comment-button-div {
+    text-align: right;
+}
+
 .comment-button {
     padding: 3px 9px;
     font-size: 10px;
@@ -70,7 +74,5 @@
         margin-right: auto;
     }
 
-    .comment-button-div {
-        text-align: right;
-    }
+
 }
