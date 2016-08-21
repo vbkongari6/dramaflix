@@ -25,7 +25,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Table
 @NamedQueries({ 
 	@NamedQuery(name = "DramaReview.findAllComments", query = "SELECT dr FROM DramaReview dr ORDER BY dr.timestamp DESC"),
-	@NamedQuery(name = "DramaReview.avgRating", query = "SELECT AVG(dr.rating + 0.0) FROM DramaReview dr WHERE dr.drama.id=:pDramaId"),
+	@NamedQuery(name = "DramaReview.avgRating", query = "SELECT AVG(dr.rating + 0.0) FROM DramaReview dr WHERE dr.drama.id=:pDramaId AND dr.rating!=0"),
 	@NamedQuery(name = "DramaReview.findDramaComments", query = "SELECT u.firstName, dr.comment, dr.rating, dr.timestamp FROM DramaReview dr INNER JOIN User u ON u.id=dr.user.id WHERE dr.drama.id=:pDramaId")
 })
 public class DramaReview {
