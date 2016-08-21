@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('sortDramaByYearController', sortDramaByYearController);
 
-    sortDramaByYearController.$inject = ['dramaService'];
-    function sortDramaByYearController (dramaService) {
+    sortDramaByYearController.$inject = ['dramaService' ,'$scope'];
+    function sortDramaByYearController (dramaService, $scope) {
         var sortDramaVm = this;
 
         console.log('In Sort Drama By Year Controller');
@@ -19,8 +19,11 @@
                 sortDramaVm.dramas = data;
             }, function (errStatus) {
                 console.log(errStatus);
+            });
 
+        $scope.$on('searching', function (event, data) {
+            sortDramaVm.searchText = data;
+        });
 
-            })
     }
 })();

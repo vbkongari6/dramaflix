@@ -21,6 +21,7 @@
                 console.log(errStatus);
             });
 
+
         $scope.$on('searching', function (event, data) {
             allDramasVm.searchText = data;
         });

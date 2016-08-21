@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('sortDramaByIMDBRatingController', sortDramaByIMDBRatingController);
 
-    sortDramaByIMDBRatingController.$inject = ['dramaService'];
-    function sortDramaByIMDBRatingController (dramaService) {
+    sortDramaByIMDBRatingController.$inject = ['dramaService', '$scope'];
+    function sortDramaByIMDBRatingController (dramaService, $scope) {
         var sortDramaVm = this;
 
         console.log('In Sort Drama By IMDB Rating Controller');
@@ -19,8 +19,11 @@
                 sortDramaVm.dramas = data;
             }, function (errStatus) {
                 console.log(errStatus);
+            });
 
+        $scope.$on('searching', function (event, data) {
+            sortDramaVm.searchText = data;
+        });
 
-            })
     }
 })();

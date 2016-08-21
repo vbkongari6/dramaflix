@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('topRatedDramasController', topRatedDramasController);
 
-    topRatedDramasController.$inject = ['dramaService'];
-    function topRatedDramasController (dramaService) {
+    topRatedDramasController.$inject = ['dramaService', '$scope'];
+    function topRatedDramasController (dramaService, $scope) {
         var topDramasVm = this;
 
         console.log('In Top Rated Dramas Controller');
@@ -19,10 +19,11 @@
                 topDramasVm.dramas = data;
             }, function (errStatus) {
                 console.log(errStatus)
-
-
-
             });
+
+        $scope.$on('searching', function (event, data) {
+            topDramasVm.searchText = data;
+        });
 
     }
 })();

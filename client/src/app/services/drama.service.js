@@ -134,7 +134,7 @@
             return $http.post('http://localhost:8080/dramaflix/api/dramareviews/comment', commentDetails)
                 .then(successFn, failureFn);
         }
-        
+
 
 
 

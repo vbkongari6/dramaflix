@@ -8,8 +8,8 @@
         .module('dramaflix')
         .controller('dramaGenreController', dramaGenreController);
 
-    dramaGenreController.$inject = ['dramaService', '$routeParams'];
-    function dramaGenreController (dramaService, $routeParams) {
+    dramaGenreController.$inject = ['dramaService', '$routeParams', '$scope'];
+    function dramaGenreController (dramaService, $routeParams, $scope) {
         var dramaGenreVm = this;
 
         console.log('In Drama Genre Controller');
@@ -19,8 +19,10 @@
                 dramaGenreVm.dramas = data;
             }, function (errStatus) {
                 console.log(errStatus);
+            });
 
-
-            })
+        $scope.$on('searching', function (event, data) {
+            dramaGenreVm.searchText = data;
+        });
     }
 })();

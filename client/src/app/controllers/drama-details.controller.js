@@ -42,8 +42,8 @@
         function postComment () {
             dramaService.postComment(dramaVm.comment)
                 .then( function (data) {
-                    getDrama();
                     dramaVm.comment = '';
+                    getDrama();
                 }, function (errStatus) {
                     console.log(errStatus);
                 });
