@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vbkongari.dramaflix.entity.Drama;
+import com.vbkongari.dramaflix.exception.UnauthorizedException;
 import com.vbkongari.dramaflix.service.DramaService;
 
 @RestController
@@ -86,7 +87,11 @@ public class DramaController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, path="{id}")
 	public void deleteDrama(@RequestHeader(value="Authorization") String jwt, @PathVariable("id") String dramaId) {
-		uC.verifyJWT(jwt);
-		service.deleteDrama(dramaId);
+		if ((uC.verifyJWT(jwt)).equals("admin")) {
+			service.deleteDrama(dramaId);
+		}
+		else {
+			throw new UnauthorizedException("Access Unauthorized");
+		}
 	}
 }
