@@ -30,7 +30,7 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-	public void verifyJWT (String jwt) {
+	public String verifyJWT (String jwt) {
 		assert jwt.substring(0, 7).equals("Bearer ");
 		jwt = jwt.substring(7);
 		
@@ -42,15 +42,17 @@ public class UserController {
 			
 			User user = new User();
 			user.setEmail((String) claims.get("email"));
-			user.setPassword((String) claims.get("password"));
+			user.setPassword((String) claims.get("password"));			
 
-			service.userAuthentication(user);		
+			Object generatedJWT = service.userAuthentication(user);			
+			return ((User) generatedJWT).getUserType();
 		} 
 	    catch (InvalidKeyException | NoSuchAlgorithmException | IllegalStateException | SignatureException
 				| IOException | JWTVerifyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+	    return "";
 	}	
 	
 	@RequestMapping(method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -105,14 +107,13 @@ public class UserController {
 		claims.put("sub", sub);
 		claims.put("iat", iat);
 		claims.put("exp", exp);
-		claims.put("id", id);
 		claims.put("email", email);
-		claims.put("password", password);
-		claims.put("userType", userType);
+		claims.put("password", password);		
 
-		final HashMap<String, Object> jwt = new HashMap<String, Object>();
+		final HashMap<String, Object> jwt = new HashMap<String, Object>();	
 		jwt.put("id", id);
 		jwt.put("token", signer.sign(claims));
+		jwt.put("usertype", userType);
 		
 		return jwt;
 	}	
