@@ -8,23 +8,41 @@
         .module('dramaflix')
         .controller('allDramasController', allDramasController);
 
-    allDramasController.$inject = ['dramaService', '$scope'];
-    function allDramasController (dramaService, $scope) {
-        var allDramasVm = this;
-
+    allDramasController.$inject = ['dramaService', '$rootScope'];
+    function allDramasController (dramaService, $rootScope) {
         console.log('In All Dramas Controller');
 
-        dramaService.getDramas()
-            .then( function (data) {
-                allDramasVm.dramas = data;
-            }, function (errStatus) {
-                console.log(errStatus);
-            });
+        var allDramasVm = this;
 
+        allDramasVm.deleteDrama = deleteDrama;
 
-        $scope.$on('searching', function (event, data) {
+        getDramas();
+        function getDramas () {
+            dramaService.getDramas()
+                .then( function (data) {
+                    allDramasVm.dramas = data;
+                }, function (errStatus) {
+                    console.log(errStatus);
+                });
+        }
+
+        $rootScope.$on('searching', function (event, data) {
             allDramasVm.searchText = data;
         });
+
+        function deleteDrama (id, title) {
+            confirm('Do you really want to delete title ' + title + ' ?');
+
+            dramaService.deleteDrama(id)
+                .then( function () {
+                        getDramas();
+                    },
+                    function (errStatus) {
+                        console.log(errStatus);
+                    });
+        }
+
+
 
     }
 })();

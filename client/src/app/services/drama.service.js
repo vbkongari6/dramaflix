@@ -27,6 +27,7 @@
         drm.getAvgDramaRating = getAvgDramaRating;
         drm.getDramaComments = getDramaComments;
         drm.postComment = postComment;
+        drm.deleteDrama = deleteDrama;
 
         function getDramas () {
             console.log('In Drama Service: GET Dramas');
@@ -64,12 +65,6 @@
                 reviews.push(review);
             });
             return reviews;
-        }
-
-        function addDrama (drama) {
-            console.log('In Drama Service: POST Drama');
-            return $http.post('http://localhost:8080/dramaflix/api/dramas', drama)
-                .then(successFn, failureFn);
         }
 
         function getTopRatedDramas () {
@@ -132,6 +127,18 @@
                 drama: { id: drm.dramaId }
             }
             return $http.post('http://localhost:8080/dramaflix/api/dramareviews/comment', commentDetails)
+                .then(successFn, failureFn);
+        }
+
+        function addDrama (drama) {
+            console.log('In Drama Service: POST Drama');
+            return $http.post('http://localhost:8080/dramaflix/api/dramas', drama)
+                .then(successFn, failureFn);
+        }
+
+        function deleteDrama (id) {
+            console.log('In Drama Service: DELETE Drama');
+            return $http.delete('http://localhost:8080/dramaflix/api/dramas/' + id)
                 .then(successFn, failureFn);
         }
 
