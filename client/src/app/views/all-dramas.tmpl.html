@@ -1,8 +1,11 @@
 <div class="container alldramas-div">
-    <div ng-repeat="drama in allDramasVm.dramas | filter:allDramasVm.searchText" class="inline-blocking">
+    <div ng-repeat="drama in allDramasVm.dramas | filter:allDramasVm.searchText" class="each-drama-div inline-blocking">
         <a ng-href="#/drama/{{drama.id}}">
-            <img ng-src="{{drama.poster}}" class="img-responsive image-settings" alt="{{drama.title}}"><br>
+            <img ng-src="{{drama.poster}}" class="img-responsive image-settings" alt="{{drama.title}}" /><br>
             <p class="inline-blocking">{{drama.title}}</p>
         </a>
+        <button type="button" class="btn btn-default drama-delete-button" ng-click="allDramasVm.deleteDrama(drama.id, drama.title)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
     </div>
 </div>

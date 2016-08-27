@@ -9,7 +9,7 @@
             <p>
                 <a ng-href="http://www.imdb.com/title/{{dramaVm.drama.imdbID}}">
                     <img src="http://ia.media-imdb.com/images/M/MV5BMTgyOTIzMTA0NV5BMl5BcG5nXkFtZTcwMTA3MDg2OA@@._V1_.png" class="img-responsive inline-blocking" alt="IMDB">
-                </a>&nbsp;{{dramaVm.drama.imdbRating}} from {{dramaVm.drama.imdbVotes}} votes &emsp;
+                </a>&nbsp;{{dramaVm.drama.imdbRating}} from {{dramaVm.drama.imdbVotes | number:0}} votes &emsp;
                 <img src="http://www.metacritic.com/images/layout/mc_logo_inverted.png" class="img-responsive inline-blocking metascore-image" alt="Metascore"> &nbsp;
                 {{dramaVm.drama.metascore}}
             </p>

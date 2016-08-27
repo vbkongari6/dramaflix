@@ -12,7 +12,9 @@
 }
 
 
-
+.each-drama-div {
+    position: relative;
+}
 
 .alldramas-div img{
     width: 120px;
@@ -21,7 +23,16 @@
 }
 
 
+.drama-delete-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
+.drama-delete-button:hover {
+    background-color: red;
+    color: white;
+}
 
 
 
