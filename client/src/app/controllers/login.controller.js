@@ -22,7 +22,6 @@
             userService.validateUser(loginVm.user)
                 .then( function (data) {
                     console.log('Login successful');
-                    localStorage.setItem('id', data.id);
                     $location.path('');
                 })
                 .catch( function (errStatus) {

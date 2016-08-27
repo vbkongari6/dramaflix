@@ -17,7 +17,7 @@
         usr.getUser = getUser;
         usr.addUser = addUser;
 
-        function validateUser(user) {
+        function validateUser (user) {
             console.log('In User Service: Validate User');
             return $http.post('http://localhost:8080/dramaflix/api/users/authenticate', user)
                 .then(successFnJWT, failureFn);
@@ -42,7 +42,11 @@
         }
 
         function successFnJWT (response) {
+            localStorage.setItem('id', response.data.id);
             localStorage.setItem('jwt', response.data.token);
+            if (response.data.usertype) {
+                localStorage.setItem('usertype', response.data.usertype);
+            }
             return response.data;
         }
 

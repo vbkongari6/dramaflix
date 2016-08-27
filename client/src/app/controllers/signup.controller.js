@@ -10,17 +10,15 @@
 
     signupController.$inject = ['userService', 'dramaService', '$location'];
     function signupController (userService, dramaService, $location) {
-        var signupVm = this;
-
-        signupVm.addUser = addUser;
-
         console.log('In Sign-up Controller');
+
+        var signupVm = this;
+        signupVm.addUser = addUser;
 
         function addUser() {
             userService.addUser(signupVm.newUser)
                 .then( function (data) {
                     console.log('Sign-up successful');
-                    localStorage.setItem('id', data.id);
                     $location.path('/profile/' + data.id);
                 }, function (errStatus) {
                     console.log(errStatus)
