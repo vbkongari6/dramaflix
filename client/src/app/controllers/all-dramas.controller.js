@@ -13,8 +13,8 @@
         console.log('In All Dramas Controller');
 
         var allDramasVm = this;
-
         allDramasVm.deleteDrama = deleteDrama;
+        allDramasVm.isUserAdmin = localStorage.getItem('usertype');
 
         getDramas();
         function getDramas () {
@@ -41,8 +41,6 @@
                         console.log(errStatus);
                     });
         }
-
-
 
     }
 })();

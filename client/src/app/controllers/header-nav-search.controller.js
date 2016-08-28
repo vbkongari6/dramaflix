@@ -42,6 +42,8 @@
         
         function logout () {
             localStorage.removeItem('jwt');
+            localStorage.removeItem('id');
+            localStorage.removeItem('usertype');
             $location.path('');
         }
 

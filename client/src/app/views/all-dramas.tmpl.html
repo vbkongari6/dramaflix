@@ -4,7 +4,7 @@
             <img ng-src="{{drama.poster}}" class="img-responsive image-settings" alt="{{drama.title}}" /><br>
             <p class="inline-blocking">{{drama.title}}</p>
         </a>
-        <button type="button" class="btn btn-default drama-delete-button" ng-click="allDramasVm.deleteDrama(drama.id, drama.title)">
+        <button ng-if="allDramasVm.isUserAdmin" class="btn btn-default drama-delete-button" ng-click="allDramasVm.deleteDrama(drama.id, drama.title)">
             <span class="glyphicon glyphicon-remove"></span>
         </button>
     </div>
