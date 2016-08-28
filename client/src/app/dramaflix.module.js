@@ -32,110 +32,111 @@
                 caseInsensitiveMatch: true,
                 controller: 'userProfileController',
                 controllerAs: 'userVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/editprofile/:id', {
                 templateUrl: 'app/views/edit-user-profile.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'editUserProfileController',
                 controllerAs: 'editUserVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'allDramasController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/adddrama', {
                 templateUrl: 'app/views/add-drama.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'addDramaController',
                 controllerAs: 'addDramaVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/drama/:id', { //used
                 templateUrl: 'app/views/drama-details.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaDetailsController',
                 controllerAs: 'dramaVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/editdrama/:id', {
                 templateUrl: 'app/views/edit-drama.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'editDramaController',
                 controllerAs: 'editDramaVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/movies/toprated', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedMoviesController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/tvseries/toprated', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedTVSeriesController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/type/:type', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaTypeController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/year/:year', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaYearController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/genre/:genre', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'dramaGenreController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/sortByYear', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramaByYearController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/sortByIMDBRating', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramaByIMDBRatingController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/sortByIMDBVotes', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'sortDramasByIMDBVotesController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .when('/dramas/toprated', { //used
                 templateUrl: 'app/views/all-dramas.tmpl.html',
                 caseInsensitiveMatch: true,
                 controller: 'topRatedDramasController',
                 controllerAs: 'allDramasVm',
-                data: { requiresLogin: true}
+                data: { requiresLogin: true }
             })
             .otherwise({
                 redirectTo: '/index'
             });
 
+        jwtInterceptorProvider.whiteListedDomains = '*';
         jwtInterceptorProvider.tokenGetter = function () {
             return localStorage.getItem('jwt');
         };
